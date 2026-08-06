@@ -210,27 +210,24 @@ function setupJoinForm() {
     });
 }
 
+/* ============================================
+   CYBER SECURITY QUIZ
+   ============================================ */
 
-            
 const quizQuestions = [
     {
-        q: "What does phishing refer to?",
+        q: "What does \"phishing\" refer to?",
         options: [
-            "Tricking someone into revealing sensitive information",
-            "A firewall",
-            "A VPN",
-            "An antivirus"
+            "Tricking someone into revealing sensitive info via fake messages",
+            "A type of firewall",
+            "A network speed test",
+            "A programming language"
         ],
         answer: 0
     },
     {
         q: "Which of these is the strongest password?",
-        options: [
-            "password123",
-            "Gashua2026",
-            "Tr#7!qLm9$vX",
-            "12345678"
-        ],
+        options: ["password123", "Gashua2026", "Tr#7!qLm9$vX", "12345678"],
         answer: 2
     },
     {
@@ -244,67 +241,157 @@ const quizQuestions = [
         answer: 0
     },
     {
+        q: "What is two-factor authentication (2FA)?",
+        options: [
+            "Using two different browsers",
+            "A second layer of login verification beyond a password",
+            "Having two email addresses",
+            "Encrypting a file twice"
+        ],
+        answer: 1
+    },
+    {
+        q: "What does \"HTTPS\" indicate about a website?",
+        options: [
+            "It's hosted in the US",
+            "It has no ads",
+            "The connection is encrypted",
+            "It loads faster"
+        ],
+        answer: 2
+    },
+    {
         q: "What is malware?",
         options: [
-            "Malicious software",
-            "A browser",
-            "A programming language",
-            "A search engine"
+            "A hardware component",
+            "Malicious software designed to harm or exploit systems",
+            "A type of antivirus",
+            "A network cable standard"
+        ],
+        answer: 1
+    },
+    {
+        q: "What is a firewall used for?",
+        options: [
+            "Speeding up your internet",
+            "Storing passwords",
+            "Filtering and controlling network traffic",
+            "Compressing files"
+        ],
+        answer: 2
+    },
+    {
+        q: "What does \"CTF\" stand for in cybersecurity?",
+        options: [
+            "Capture The Flag",
+            "Cyber Threat Filter",
+            "Central Traffic Firewall",
+            "Coded Transfer Format"
         ],
         answer: 0
     },
     {
-        q: "Which attack floods a server with traffic?",
+        q: "What's the safest thing to do with an unexpected email attachment?",
         options: [
-            "SQL Injection",
-            "DDoS",
-            "Brute Force",
-            "Spoofing"
+            "Open it to see what it is",
+            "Forward it to a friend first",
+            "Avoid opening it and verify the sender first",
+            "Rename the file"
+        ],
+        answer: 2
+    },
+    {
+        q: "What does \"ethical hacking\" mean?",
+        options: [
+            "Hacking for personal gain",
+            "Testing systems with permission to find and fix vulnerabilities",
+            "Hacking only on weekends",
+            "Writing hacking tutorials"
         ],
         answer: 1
     }
 ];
 
-let currentQuestion = 0;
-let score = 0;
+let quizIndex = 0;
+let quizScore = 0;
 
-function loadQuiz() {
-    const question = document.getElementById("quiz-question");
-    const options = document.getElementById("quiz-options");
+function startQuiz() {
+    quizIndex = 0;
+    quizScore = 0;
 
-    if (!question || !options) return;
+    document.getElementById("quiz-start").classList.add("hidden");
+    document.getElementById("quiz-result").classList.add("hidden");
+    document.getElementById("quiz-question").classList.remove("hidden");
 
-    if (currentQuestion >= quizQuestions.length) {
-        question.innerHTML = `Quiz Complete!<br>Your Score: ${score}/${quizQuestions.length}`;
-        options.innerHTML = "";
-        return;
-    }
+    showQuestion();
+}
 
-    const q = quizQuestions[currentQuestion];
+function showQuestion() {
+    const q = quizQuestions[quizIndex];
+    document.getElementById("quiz-progress").textContent =
+        `Question ${quizIndex + 1} / ${quizQuestions.length}`;
+    document.getElementById("quiz-score").textContent = `Score: ${quizScore}`;
+    document.getElementById("quiz-question-text").textContent = q.q;
+    document.getElementById("quiz-feedback").textContent = "";
 
-    question.textContent = q.q;
-    options.innerHTML = "";
+    const optionsEl = document.getElementById("quiz-options");
+    optionsEl.innerHTML = "";
 
-    q.options.forEach((option, index) => {
+    q.options.forEach((opt, i) => {
         const btn = document.createElement("button");
-        btn.textContent = option;
-        btn.className = "quiz-btn";
-        btn.onclick = () => checkAnswer(index);
-        options.appendChild(btn);
+        btn.className = "quiz-option";
+        btn.textContent = opt;
+        btn.onclick = () => selectAnswer(i);
+        optionsEl.appendChild(btn);
     });
 }
 
-function checkAnswer(selected) {
-    if (selected === quizQuestions[currentQuestion].answer) {
-        score++;
+function selectAnswer(i) {
+    const q = quizQuestions[quizIndex];
+    const buttons = document.querySelectorAll("#quiz-options .quiz-option");
+    buttons.forEach(b => b.disabled = true);
+
+    const feedback = document.getElementById("quiz-feedback");
+
+    if (i === q.answer) {
+        quizScore++;
+        buttons[i].classList.add("correct");
+        feedback.textContent = "Correct.";
+        feedback.className = "quiz-feedback correct-text";
+    } else {
+        buttons[i].classList.add("wrong");
+        buttons[q.answer].classList.add("correct");
+        feedback.textContent = "Not quite.";
+        feedback.className = "quiz-feedback wrong-text";
     }
 
-    currentQuestion++;
-    loadQuiz();
+    document.getElementById("quiz-score").textContent = `Score: ${quizScore}`;
+
+    setTimeout(() => {
+        quizIndex++;
+        if (quizIndex < quizQuestions.length) {
+            showQuestion();
+        } else {
+            showResult();
+        }
+    }, 1100);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    loadQuiz();
-});
+function showResult() {
+    document.getElementById("quiz-question").classList.add("hidden");
+    document.getElementById("quiz-result").classList.remove("hidden");
 
-      
+    const total = quizQuestions.length;
+    document.getElementById("quiz-result-score").textContent =
+        `You scored ${quizScore} / ${total}`;
+
+    let rank;
+    const pct = quizScore / total;
+    if (pct === 1) rank = "Elite Hacker";
+    else if (pct >= 0.8) rank = "White Hat Hacker";
+    else if (pct >= 0.6) rank = "Security Analyst";
+    else if (pct >= 0.4) rank = "Cyber Cadet";
+    else rank = "Script Kiddie";
+
+    document.getElementById("quiz-result-rank").textContent = `Rank: ${rank}`;
+}
