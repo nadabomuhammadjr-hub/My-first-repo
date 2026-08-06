@@ -1,4 +1,4 @@
-/ Lines that type out one by one in the hero terminal window
+// Lines that type out one by one in the hero terminal window
 const terminalLines = [
     "initializing_defense_protocol...",
     "scanning_network... clear.",

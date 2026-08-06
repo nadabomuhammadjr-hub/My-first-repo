@@ -1,179 +1,273 @@
-<!DOCTYPE html>
+.<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Security Club</title>
-
+    <title>Cyber Security Club | Federal University Gashua</title>
+    <meta name="description" content="Official website of the Cyber Security Club at Federal University Gashua — ethical hacking, networking, and programming training.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- Boot Intro Screen -->
+<div id="intro-screen">
+    <div class="boot-lines" id="boot-lines"></div>
+</div>
+
 <!-- Navigation -->
-
 <nav>
-    <h2>Cyber Security Club</h2>
-
+    <h2>FUGA Cyber Club</h2>
     <ul>
-        <li><a href="#">Home</a></li>
+        <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
+        <li><a href="#services">Training</a></li>
         <li><a href="#events">Events</a></li>
+        <li><a href="#quiz">Quiz</a></li>
+        <li><a href="#glossary">Glossary</a></li>
+        <li><a href="#join">Join</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#team">Team</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
 
 <!-- Hero -->
+<section class="hero" id="home">
 
-<section class="hero">
+    <div class="terminal-window">
+        <div class="terminal-bar">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-title">bash — ccsc</span>
+        </div>
+        <div class="terminal-body">
+            <p><span class="prompt">root@ccsc:~$</span> <span id="typewriter"></span><span class="cursor">_</span></p>
+        </div>
+    </div>
 
-    <h1>WELCOME TO THE CYBER SECURITY CLUB</h1>
-
+    <h1>Cyber Security Club</h1>
     <p>
-        Learn Ethical Hacking, Cyber Security, Networking,
-        Programming, Digital Forensics, and Web Development.
+        Ethical hacking, network defense, digital forensics, and software
+        development — trained by students, for students.
     </p>
 
-    <button onclick="joinClub()">Join Us</button>
+    <button onclick="location.href='#join'">Join the Club</button>
+    <button class="btn-secondary" onclick="location.href='#events'">View Events</button>
 
 </section>
 
 <!-- About -->
-
 <section id="about">
-
-<h2>About Us</h2>
-
-<div class="card">
-
-<p>
-The Cyber Security Club is a community of students passionate
-about technology, cyber security, ethical hacking,
-network security, and software development.
-
-We organize training, workshops, competitions, and seminars
-to prepare members for careers in technology.
-</p>
-
-</div>
-
+    <h2>About Us</h2>
+    <div class="card">
+        <p>
+            The Cyber Security Club is a community of students at Federal
+            University Gashua who are passionate about technology, ethical
+            hacking, network security, and software development. We run
+            regular training sessions, workshops, and competitions to prepare
+            members for real careers in tech and cybersecurity.
+        </p>
+    </div>
 </section>
 
 <!-- Services -->
-
 <section id="services">
-
-<h2>What We Teach</h2>
-
-<div class="card">
-
-<ul>
-
-<li>Ethical Hacking</li>
-
-<li>Network Security</li>
-
-<li>Web Development</li>
-
-<li>Programming (HTML, CSS, JavaScript)</li>
-
-<li>Python Programming</li>
-
-<li>Digital Forensics</li>
-
-<li>Cyber Awareness</li>
-
-</ul>
-
-</div>
-
+    <h2>What We Teach</h2>
+    <div class="skills-grid">
+        <div class="skill-item">
+            <span class="skill-icon">⌘</span>
+            <h3>Ethical Hacking</h3>
+        </div>
+        <div class="skill-item">
+            <span class="skill-icon">◈</span>
+            <h3>Network Security</h3>
+        </div>
+        <div class="skill-item">
+            <span class="skill-icon">⌨</span>
+            <h3>Web Development</h3>
+        </div>
+        <div class="skill-item">
+            <span class="skill-icon">{ }</span>
+            <h3>Programming</h3>
+        </div>
+        <div class="skill-item">
+            <span class="skill-icon">🐍</span>
+            <h3>Python</h3>
+        </div>
+        <div class="skill-item">
+            <span class="skill-icon">🔍</span>
+            <h3>Digital Forensics</h3>
+        </div>
+        <div class="skill-item">
+            <span class="skill-icon">⚠</span>
+            <h3>Cyber Awareness</h3>
+        </div>
+    </div>
 </section>
 
 <!-- Events -->
-
 <section id="events">
-
-<h2>Upcoming Events</h2>
-
-<div class="card">
-
-<p>✔ Cyber Security Workshop</p>
-
-<p>✔ Capture The Flag (CTF)</p>
-
-<p>✔ Programming Competition</p>
-
-<p>✔ Web Development Bootcamp</p>
-
-</div>
-
+    <h2>Upcoming Events</h2>
+    <div class="card">
+        <ul class="event-list">
+            <li><span class="tag">Workshop</span> Cyber Security Workshop</li>
+            <li><span class="tag">CTF</span> Capture The Flag Challenge</li>
+            <li><span class="tag">Contest</span> Programming Competition</li>
+            <li><span class="tag">Bootcamp</span> Web Development Bootcamp</li>
+        </ul>
+    </div>
 </section>
-<!-- Team Section -->
 
+<!-- Quiz -->
+<section id="quiz">
+    <h2>Test Your Knowledge</h2>
+    <p class="section-subtitle">A quick cybersecurity quiz. How high can you rank?</p>
+
+    <div class="card quiz-card">
+
+        <!-- Start screen -->
+        <div id="quiz-start">
+            <p>10 questions. No pressure. Well, a little pressure.</p>
+            <button onclick="startQuiz()">Start Quiz</button>
+        </div>
+
+        <!-- Question screen -->
+        <div id="quiz-question" class="hidden">
+            <div class="quiz-meta">
+                <span id="quiz-progress">Question 1 / 10</span>
+                <span id="quiz-score">Score: 0</span>
+            </div>
+            <p id="quiz-question-text"></p>
+            <div id="quiz-options" class="quiz-options"></div>
+            <p id="quiz-feedback" class="quiz-feedback"></p>
+        </div>
+
+        <!-- Result screen -->
+        <div id="quiz-result" class="hidden">
+            <p id="quiz-result-score"></p>
+            <p id="quiz-result-rank"></p>
+            <button onclick="startQuiz()">Try Again</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- Join -->
+<section id="join">
+    <h2>Join the Club</h2>
+    <p class="section-subtitle">Applications are reviewed manually. You'll be added once approved.</p>
+
+    <div class="card join-card">
+
+        <form id="join-form">
+            <label for="join-name">Full Name</label>
+            <input type="text" id="join-name" name="name" required placeholder="e.g. Muhammad Bello">
+
+            <label for="join-email">Gmail Address</label>
+            <input type="email" id="join-email" name="email" required placeholder="yourname@gmail.com">
+
+            <label for="join-interest">What do you want to learn?</label>
+            <textarea id="join-interest" name="interest" required rows="3" placeholder="e.g. Ethical hacking, Python, Web development..."></textarea>
+
+            <button type="submit">Submit Application</button>
+        </form>
+
+        <div id="join-pending" class="hidden">
+            <p class="pending-text">Wait for DADDY PROGRAMMER to accept you before you become a member of this club.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- Glossary -->
+<section id="glossary">
+    <h2>Glossary</h2>
+    <p class="section-subtitle">Key cybersecurity terms every member should know.</p>
+    <div id="glossary-grid" class="glossary-grid"></div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery">
+    <h2>Gallery</h2>
+    <p class="section-subtitle">Moments from our past events and training sessions.</p>
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <span class="gallery-placeholder-icon">🖼</span>
+            <p>Add photo</p>
+        </div>
+        <div class="gallery-item">
+            <span class="gallery-placeholder-icon">🖼</span>
+            <p>Add photo</p>
+        </div>
+        <div class="gallery-item">
+            <span class="gallery-placeholder-icon">🖼</span>
+            <p>Add photo</p>
+        </div>
+        <div class="gallery-item">
+            <span class="gallery-placeholder-icon">🖼</span>
+            <p>Add photo</p>
+        </div>
+        <div class="gallery-item">
+            <span class="gallery-placeholder-icon">🖼</span>
+            <p>Add photo</p>
+        </div>
+        <div class="gallery-item">
+            <span class="gallery-placeholder-icon">🖼</span>
+            <p>Add photo</p>
+        </div>
+    </div>
+    <p class="gallery-note">// Replace each placeholder with an &lt;img&gt; tag once you have event photos.</p>
+</section>
+
+<!-- Team -->
 <section id="team">
+    <h2>Meet Our Team</h2>
+    <div class="team-grid">
 
-<h2>Meet Our Team</h2>
+        <div class="card team-card">
+            <div class="team-photo">CP</div>
+            <h3>Club President</h3>
+            <p>Leads the Cyber Security Club and organizes club activities.</p>
+        </div>
 
-<div class="card">
+        <div class="card team-card">
+            <div class="team-photo">VP</div>
+            <h3>Vice President</h3>
+            <p>Supports the president and coordinates training sessions.</p>
+        </div>
 
-<h3>Club President</h3>
-<p>Leads the Cyber Security Club and organizes club activities.</p>
+        <div class="card team-card">
+            <div class="team-photo">TL</div>
+            <h3>Technical Lead</h3>
+            <p>Teaches programming, networking and ethical hacking.</p>
+        </div>
 
-</div>
+        <div class="card team-card">
+            <div class="team-photo">SEC</div>
+            <h3>Secretary</h3>
+            <p>Records meetings and manages club communications.</p>
+        </div>
 
-<div class="card">
-
-<h3>Vice President</h3>
-<p>Supports the president and coordinates training sessions.</p>
-
-</div>
-
-<div class="card">
-
-<h3>Technical Lead</h3>
-<p>Teaches programming, networking and ethical hacking.</p>
-
-</div>
-
-<div class="card">
-
-<h3>Secretary</h3>
-<p>Records meetings and manages club communications.</p>
-
-</div>
-
+    </div>
 </section>
-
 
 <!-- Contact -->
-
 <section id="contact" class="contact">
-
-<h2>Contact Us</h2>
-
-<div class="card">
-
-<p>Email: cyberclub@gmail.com</p>
-
-<p>Phone: +2348164002794</p>
-
-<p>Location: Federal University Gashua</p>
-
-<button onclick="contactClub()">Contact Club</button>
-
-</div>
-
+    <h2>Contact Us</h2>
+    <div class="card">
+        <p>Email: cyberclubprogrammer@gmail.com</p>
+        <p>Phone: +234 8164002794</p>
+        <p>Location: Federal University Gashua</p>
+        <button onclick="contactClub()">Contact Club</button>
+    </div>
 </section>
 
 <!-- Footer -->
-
 <footer>
-
-<p>&copy; 2026 Cyber Security Club. All Rights Reserved.</p>
-
+    <p>&copy; 2026 Cyber Security Club, Federal University Gashua. All Rights Reserved.</p>
 </footer>
 
 <script src="script.js"></script>
-
 </body>
 </html>

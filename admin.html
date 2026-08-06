@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Cyber Security Club</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <h2>FUGA Cyber Club — Admin</h2>
+    <ul>
+        <li><a href="index.html">Back to Site</a></li>
+    </ul>
+</nav>
+
+<section id="admin-login-section">
+    <h2>Admin Login</h2>
+    <div class="card admin-card">
+        <form id="admin-login-form">
+            <label for="admin-password">Password</label>
+            <input type="password" id="admin-password" placeholder="Enter admin password" required>
+            <button type="submit">Log In</button>
+            <p id="admin-login-error" class="wrong-text hidden">Wrong password. Try again.</p>
+        </form>
+    </div>
+</section>
+
+<section id="admin-panel-section" class="hidden">
+    <h2>Manage Glossary</h2>
+    <p class="section-subtitle">Terms you add here appear on the Glossary section of the site — saved on this device/browser.</p>
+
+    <div class="card admin-card">
+        <form id="admin-add-form">
+            <label for="term-name">Term</label>
+            <input type="text" id="term-name" required placeholder="e.g. Zero-day Exploit">
+
+            <label for="term-definition">Definition</label>
+            <textarea id="term-definition" rows="3" required placeholder="A short, clear definition..."></textarea>
+
+            <button type="submit">Add Term</button>
+        </form>
+    </div>
+
+    <h2 style="margin-top:50px;">Current Terms</h2>
+    <div id="admin-term-list" class="admin-term-list"></div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Cyber Security Club, Federal University Gashua. All Rights Reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
