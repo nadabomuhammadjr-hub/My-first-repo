@@ -1,3 +1,9 @@
+/* ============================================
+   CYBER SECURITY CLUB — Terminal Theme
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+
 :root{
     --bg:#0a0e14;
     --bg-panel:#0f151d;
@@ -26,7 +32,6 @@ body{
     overflow-x:hidden;
 }
 
-/* Ambient scanline overlay — subtle CRT feel across the whole page */
 body::before{
     content:"";
     position:fixed;
@@ -42,7 +47,6 @@ body::before{
     );
 }
 
-/* Faint circuit-grid backdrop */
 body::after{
     content:"";
     position:fixed;
@@ -211,7 +215,6 @@ nav ul li a:hover::before{
     margin:10px;
 }
 
-/* Blinking terminal cursor after hero tagline */
 .hero p::after{
     content:"_";
     color:var(--green);
@@ -300,7 +303,6 @@ button:active{
     transform:scale(.97);
 }
 
-/* Secondary / ghost button style if you add class="btn-secondary" */
 button.btn-secondary{
     color:var(--amber);
     border-color:var(--amber);
@@ -346,9 +348,8 @@ section h2::before{
     transition:.35s;
 }
 
-/* Fake terminal title bar — the signature element */
 .card::before{
-    content:"● ● ● member.log";
+    content:"● ● ●  member.log";
     display:block;
     background:var(--bg-panel-2);
     color:var(--text-dim);

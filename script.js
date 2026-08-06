@@ -1,4 +1,8 @@
-/ Lines that type out one by one in the hero terminal window
+/* ============================================
+   CYBER SECURITY CLUB — script.js
+   ============================================ */
+
+// Lines that type out one by one in the hero terminal window
 const terminalLines = [
     "initializing_defense_protocol...",
     "scanning_network... clear.",
@@ -105,29 +109,39 @@ const defaultGlossary = [
     { term: "DDoS Attack", def: "Distributed Denial of Service — overwhelming a system with traffic to take it offline." }
 ];
 
-// Terms added via the admin page, saved on this device only
-function getCustomGlossary() {
+// Terms added via the admin page — stored in Firestore, visible to everyone
+async function getCustomGlossary() {
     try {
-        return JSON.parse(localStorage.getItem("ccsc_custom_glossary")) || [];
-    } catch {
+        const snapshot = await db.collection("glossary").get();
+        return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    } catch (err) {
+        console.error("Failed to load glossary from database:", err);
         return [];
     }
 }
 
-function saveCustomGlossary(terms) {
-    localStorage.setItem("ccsc_custom_glossary", JSON.stringify(terms));
+async function addGlossaryTerm(term, def) {
+    await db.collection("glossary").add({ term, def });
 }
 
-function getAllGlossaryTerms() {
-    return [...defaultGlossary, ...getCustomGlossary()];
+async function deleteGlossaryTerm(id) {
+    await db.collection("glossary").doc(id).delete();
 }
 
-function renderGlossary() {
+async function getAllGlossaryTerms() {
+    const custom = await getCustomGlossary();
+    return [...defaultGlossary, ...custom];
+}
+
+async function renderGlossary() {
     const grid = document.getElementById("glossary-grid");
     if (!grid) return;
 
+    grid.innerHTML = `<p class="section-subtitle">Loading...</p>`;
+    const terms = await getAllGlossaryTerms();
+
     grid.innerHTML = "";
-    getAllGlossaryTerms().forEach(item => {
+    terms.forEach(item => {
         const card = document.createElement("div");
         card.className = "glossary-card";
         card.innerHTML = `<h3>${escapeHTML(item.term)}</h3><p>${escapeHTML(item.def)}</p>`;
@@ -162,18 +176,33 @@ function setupJoinForm() {
         submitBtn.disabled = true;
         submitBtn.textContent = "Submitting...";
 
-        const formData = new FormData(form);
+        const name = document.getElementById("join-name").value.trim();
+        const email = document.getElementById("join-email").value.trim();
+        const interest = document.getElementById("join-interest").value.trim();
 
+        try {
+            await db.collection("applications").add({
+                name,
+                email,
+                interest,
+                status: "pending",
+                submittedAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+        } catch (err) {
+            console.error("Application submission failed:", err);
+        }
+
+        // Optional: also email you a copy if you've set up Formspree
         try {
             if (!FORM_ENDPOINT.includes("YOUR_FORM_ID")) {
                 await fetch(FORM_ENDPOINT, {
                     method: "POST",
-                    body: formData,
+                    body: new FormData(form),
                     headers: { "Accept": "application/json" }
                 });
             }
         } catch (err) {
-            console.error("Application submission failed:", err);
+            console.error("Formspree notification failed:", err);
         }
 
         form.classList.add("hidden");
@@ -212,157 +241,7 @@ const quizQuestions = [
         answer: 0
     },
     {
-        q: "What is two-factor authentication (2FA)?",
-        options: [
-            "Using two different browsers",
-            "A second layer of login verification beyond a password",
-            "Having two email addresses",
-            "Encrypting a file twice"
-        ],
-        answer: 1
-    },
-    {
-        q: "What does \"HTTPS\" indicate about a website?",
-        options: [
-            "It's hosted in the US",
-            "It has no ads",
-            "The connection is encrypted",
-            "It loads faster"
-        ],
-        answer: 2
-    },
-    {
-        q: "What is malware?",
-        options: [
-            "A hardware component",
-            "Malicious software designed to harm or exploit systems",
-            "A type of antivirus",
-            "A network cable standard"
-        ],
-        answer: 1
-    },
-    {
-        q: "What is a firewall used for?",
-        options: [
-            "Speeding up your internet",
-            "Storing passwords",
-            "Filtering and controlling network traffic",
-            "Compressing files"
-        ],
-        answer: 2
-    },
-    {
-        q: "What does \"CTF\" stand for in cybersecurity?",
-        options: [
-            "Capture The Flag",
-            "Cyber Threat Filter",
-            "Central Traffic Firewall",
-            "Coded Transfer Format"
-        ],
-        answer: 0
-    },
-    {
-        q: "What's the safest thing to do with an unexpected email attachment?",
-        options: [
-            "Open it to see what it is",
-            "Forward it to a friend first",
-            "Avoid opening it and verify the sender first",
-            "Rename the file"
-        ],
-        answer: 2
-    },
-    {
-        q: "What does \"ethical hacking\" mean?",
-        options: [
-            "Hacking for personal gain",
-            "Testing systems with permission to find and fix vulnerabilities",
-            "Hacking only on weekends",
-            "Writing hacking tutorials"
-        ],
-        answer: 1
-    }
-];
+        q
+...
 
-let quizIndex = 0;
-let quizScore = 0;
-
-function startQuiz() {
-    quizIndex = 0;
-    quizScore = 0;
-
-    document.getElementById("quiz-start").classList.add("hidden");
-    document.getElementById("quiz-result").classList.add("hidden");
-    document.getElementById("quiz-question").classList.remove("hidden");
-
-    showQuestion();
-}
-
-function showQuestion() {
-    const q = quizQuestions[quizIndex];
-    document.getElementById("quiz-progress").textContent =
-        `Question ${quizIndex + 1} / ${quizQuestions.length}`;
-    document.getElementById("quiz-score").textContent = `Score: ${quizScore}`;
-    document.getElementById("quiz-question-text").textContent = q.q;
-    document.getElementById("quiz-feedback").textContent = "";
-
-    const optionsEl = document.getElementById("quiz-options");
-    optionsEl.innerHTML = "";
-
-    q.options.forEach((opt, i) => {
-        const btn = document.createElement("button");
-        btn.className = "quiz-option";
-        btn.textContent = opt;
-        btn.onclick = () => selectAnswer(i);
-        optionsEl.appendChild(btn);
-    });
-}
-
-function selectAnswer(i) {
-    const q = quizQuestions[quizIndex];
-    const buttons = document.querySelectorAll("#quiz-options .quiz-option");
-    buttons.forEach(b => b.disabled = true);
-
-    const feedback = document.getElementById("quiz-feedback");
-
-    if (i === q.answer) {
-        quizScore++;
-        buttons[i].classList.add("correct");
-        feedback.textContent = "Correct.";
-        feedback.className = "quiz-feedback correct-text";
-    } else {
-        buttons[i].classList.add("wrong");
-        buttons[q.answer].classList.add("correct");
-        feedback.textContent = "Not quite.";
-        feedback.className = "quiz-feedback wrong-text";
-    }
-
-    document.getElementById("quiz-score").textContent = `Score: ${quizScore}`;
-
-    setTimeout(() => {
-        quizIndex++;
-        if (quizIndex < quizQuestions.length) {
-            showQuestion();
-        } else {
-            showResult();
-        }
-    }, 1100);
-}
-
-function showResult() {
-    document.getElementById("quiz-question").classList.add("hidden");
-    document.getElementById("quiz-result").classList.remove("hidden");
-
-    const total = quizQuestions.length;
-    document.getElementById("quiz-result-score").textContent =
-        `You scored ${quizScore} / ${total}`;
-
-    let rank;
-    const pct = quizScore / total;
-    if (pct === 1) rank = "Elite Hacker";
-    else if (pct >= 0.8) rank = "White Hat Hacker";
-    else if (pct >= 0.6) rank = "Security Analyst";
-    else if (pct >= 0.4) rank = "Cyber Cadet";
-    else rank = "Script Kiddie";
-
-    document.getElementById("quiz-result-rank").textContent = `Rank: ${rank}`;
-}
+[Message clipped]  View entire message
