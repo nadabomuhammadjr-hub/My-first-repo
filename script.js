@@ -210,37 +210,8 @@ function setupJoinForm() {
     });
 }
 
-/* ============================================
-   CYBER SECURITY QUIZ
-   ============================================ */
 
-const quizQuestions = [
-    {
-        q: "What does \"phishing\" refer to?",
-        options: [
-            "Tricking someone into revealing sensitive info via fake messages",
-            "A type of firewall",
-            "A network speed test",
-            "A programming language"
-        ],
-        answer: 0
-    },
-    {
-        q: "Which of these is the strongest password?",
-        options: ["password123", "Gashua2026", "Tr#7!qLm9$vX", "12345678"],
-        answer: 2
-    },
-    {
-        q: "What does VPN stand for?",
-        options: [
-            "Virtual Private Network",
-            "Verified Public Node",
-            "Virtual Protected Node",
-            "Very Personal Network"
-        ],
-        answer: 0
-    },
-    {
+            
 const quizQuestions = [
     {
         q: "What does phishing refer to?",
