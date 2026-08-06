@@ -241,7 +241,99 @@ const quizQuestions = [
         answer: 0
     },
     {
-        q
-...
+const quizQuestions = [
+    {
+        q: "What does phishing refer to?",
+        options: [
+            "Tricking someone into revealing sensitive information",
+            "A firewall",
+            "A VPN",
+            "An antivirus"
+        ],
+        answer: 0
+    },
+    {
+        q: "Which of these is the strongest password?",
+        options: [
+            "password123",
+            "Gashua2026",
+            "Tr#7!qLm9$vX",
+            "12345678"
+        ],
+        answer: 2
+    },
+    {
+        q: "What does VPN stand for?",
+        options: [
+            "Virtual Private Network",
+            "Verified Public Node",
+            "Virtual Protected Node",
+            "Very Personal Network"
+        ],
+        answer: 0
+    },
+    {
+        q: "What is malware?",
+        options: [
+            "Malicious software",
+            "A browser",
+            "A programming language",
+            "A search engine"
+        ],
+        answer: 0
+    },
+    {
+        q: "Which attack floods a server with traffic?",
+        options: [
+            "SQL Injection",
+            "DDoS",
+            "Brute Force",
+            "Spoofing"
+        ],
+        answer: 1
+    }
+];
 
-[Message clipped]  View entire message
+let currentQuestion = 0;
+let score = 0;
+
+function loadQuiz() {
+    const question = document.getElementById("quiz-question");
+    const options = document.getElementById("quiz-options");
+
+    if (!question || !options) return;
+
+    if (currentQuestion >= quizQuestions.length) {
+        question.innerHTML = `Quiz Complete!<br>Your Score: ${score}/${quizQuestions.length}`;
+        options.innerHTML = "";
+        return;
+    }
+
+    const q = quizQuestions[currentQuestion];
+
+    question.textContent = q.q;
+    options.innerHTML = "";
+
+    q.options.forEach((option, index) => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.className = "quiz-btn";
+        btn.onclick = () => checkAnswer(index);
+        options.appendChild(btn);
+    });
+}
+
+function checkAnswer(selected) {
+    if (selected === quizQuestions[currentQuestion].answer) {
+        score++;
+    }
+
+    currentQuestion++;
+    loadQuiz();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadQuiz();
+});
+
+      
