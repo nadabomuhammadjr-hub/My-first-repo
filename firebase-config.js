@@ -7,12 +7,12 @@
    ============================================ */
 
 const firebaseConfig = {
-    apiKey: "1PRO3322",
-    authDomain: "Cyber-app.firebaseapp.com",
+    apiKey: "AIzaSyDOCAbC123dEf456GhI789jklMn0",
+    authDomain: "Cyber-app.firebase.com,firebase.com.",
     projectId: "programmer-cyber-app",
-    storageBucket: "programmer-cyber-security.appspot.com",
-    messagingSenderId: "2348164002794",
-    appId: "8jn8ad6+fp%t2Wt"
+    storageBucket: "programmer-cyber-app.appspot.com",
+    messagingSenderId: "612091317777",
+    appId: "1:61209131:web:p6r1o2g0r9a1m3m1e"
 };
 
 firebase.initializeApp(firebaseConfig);
