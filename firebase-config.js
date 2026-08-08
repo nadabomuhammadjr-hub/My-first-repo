@@ -1,19 +1,17 @@
-/* ============================================
-   FIREBASE CONFIG
-   ============================================
-   Replace the values below with YOUR OWN config
-   from Firebase Console > Project Settings > General
-   > Your apps > SDK setup and configuration.
-   ============================================ */
+.// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDOCAbC123dEf456GhI789jklMn0",
-    authDomain: "Cyber-app.firebase.com,firebase.com.",
-    projectId: "programmer-cyber-app",
-    storageBucket: "programmer-cyber-app.appspot.com",
-    messagingSenderId: "612091317777",
-    appId: "1:61209131:web:p6r1o2g0r9a1m3m1e"
+  apiKey: "AIzaSyBKSNHZLH83oVbjJpViVuT78SnFDGRtDm8",
+  authDomain: "studio-2110543003-5c03f.firebaseapp.com",
+  projectId: "studio-2110543003-5c03f",
+  storageBucket: "studio-2110543003-5c03f.firebasestorage.app",
+  messagingSenderId: "944057727202",
+  appId: "1:944057727202:web:7aafa451dbcd2a238d46bb"
 };
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
