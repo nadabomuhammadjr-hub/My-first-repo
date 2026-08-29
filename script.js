@@ -376,6 +376,10 @@ function selectAnswer(i) {
         }
     }, 1100);
 }
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/My-first-repo/service-worker.js');
+}
+
 
 function showResult() {
     document.getElementById("quiz-question").classList.add("hidden");
