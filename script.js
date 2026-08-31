@@ -474,7 +474,7 @@ function setupJoinForm() {
    CYBER SECURITY QUIZ
    ============================================ */
 
-const quizQuestions = [
+const fugaquizQuestions = [
     {
         q: "What does \"phishing\" refer to?",
         options: [
@@ -587,9 +587,9 @@ function startQuiz() {
 }
 
 function showQuestion() {
-    const q = quizQuestions[quizIndex];
+    const q = fugaquizQuestions[quizIndex];
     document.getElementById("quiz-progress").textContent =
-        `Question ${quizIndex + 1} / ${quizQuestions.length}`;
+        `Question ${quizIndex + 1} / ${fugaquizQuestions.length}`;
     document.getElementById("quiz-score").textContent = `Score: ${quizScore}`;
     document.getElementById("quiz-question-text").textContent = q.q;
     document.getElementById("quiz-feedback").textContent = "";
@@ -607,7 +607,7 @@ function showQuestion() {
 }
 
 function selectAnswer(i) {
-    const q = quizQuestions[quizIndex];
+    const q = fugaquizQuestions[quizIndex];
     const buttons = document.querySelectorAll("#quiz-options .quiz-option");
     buttons.forEach(b => b.disabled = true);
 
