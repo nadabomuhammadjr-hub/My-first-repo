@@ -59,6 +59,265 @@
 
     <button onclick="location.href='#join'">Join the Club</button>
     <button class="btn-secondary" onclick="location.href='#events'">View Events</button>
+<!-- =========================================
+     FUGA LEARNING MODULE
+     ========================================= -->
+
+<div
+    id="learningModuleModal"
+    class="learning-module-modal"
+    aria-hidden="true">
+
+
+    <div class="learning-module-window">
+
+
+        <!-- CLOSE -->
+
+        <button
+            class="module-close"
+            onclick="closeLearningModule()"
+            aria-label="Close module">
+
+            &times;
+
+        </button>
+
+
+        <!-- MODULE HEADER -->
+
+        <div class="module-header">
+
+            <span
+                id="moduleLevel"
+                class="module-level">
+
+                BEGINNER
+
+            </span>
+
+
+            <h2
+                id="moduleTitle">
+
+                Module Title
+
+            </h2>
+
+
+            <p
+                id="moduleDescription">
+
+                Module description.
+
+            </p>
+
+        </div>
+
+
+        <!-- PROGRESS -->
+
+        <div class="module-progress">
+
+            <div>
+
+                <span>
+                    MODULE PROGRESS
+                </span>
+
+                <strong
+                    id="moduleProgressText">
+
+                    0%
+
+                </strong>
+
+            </div>
+
+
+            <div class="module-progress-bar">
+
+                <span
+                    id="moduleProgressBar">
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- OBJECTIVES -->
+
+        <div class="module-section">
+
+            <span class="module-kicker">
+                LEARNING OBJECTIVES
+            </span>
+
+            <h3>
+                What You Will Learn
+            </h3>
+
+
+            <ul
+                id="moduleObjectives">
+
+                <li>
+                    Understand the core concepts.
+                </li>
+
+                <li>
+                    Identify common security risks.
+                </li>
+
+                <li>
+                    Apply defensive principles.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- TOPICS -->
+
+        <div class="module-section">
+
+            <span class="module-kicker">
+                MODULE TOPICS
+            </span>
+
+            <h3>
+                Topics Covered
+            </h3>
+
+
+            <ul
+                id="moduleTopics"
+                class="module-topic-list">
+
+            </ul>
+
+        </div>
+
+
+        <!-- LESSON -->
+
+        <div class="module-section">
+
+            <span class="module-kicker">
+                THEORY
+            </span>
+
+            <h3>
+                Core Lesson
+            </h3>
+
+
+            <div
+                id="moduleLesson"
+                class="module-lesson">
+
+                <p>
+                    Select a learning module to begin.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRACTICAL LAB -->
+
+        <div class="module-lab">
+
+            <span class="module-kicker">
+                PRACTICAL LAB
+            </span>
+
+            <h3>
+                Authorized Security Exercise
+            </h3>
+
+
+            <p>
+
+                Practical exercises should only be
+                performed inside systems and
+                environments where you have explicit
+                authorization.
+
+            </p>
+
+
+            <button
+                id="moduleLabButton"
+                class="module-action">
+
+                Start Lab →
+
+            </button>
+
+        </div>
+
+
+        <!-- QUIZ -->
+
+        <div class="module-quiz">
+
+            <span class="module-kicker">
+                KNOWLEDGE CHECK
+            </span>
+
+            <h3>
+                Quick Quiz
+            </h3>
+
+
+            <div
+                id="moduleQuiz">
+
+            </div>
+
+
+            <button
+                id="quizSubmit"
+                class="module-action">
+
+                Submit Answer
+
+            </button>
+
+
+            <div
+                id="quizResult"
+                class="quiz-result">
+
+            </div>
+
+        </div>
+
+
+        <!-- COMPLETE -->
+
+        <div class="module-completion">
+
+            <button
+                id="completeModule"
+                class="complete-module">
+
+                ✓ Mark Module Complete
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
 
 </section>
 
@@ -98,7 +357,7 @@
         </div>
         <div class="skill-item">
             <span class="skill-icon">🐍</span>
-            <h3>Python</h3>
+            <h3>Phishing</h3>
         </div>
         <div class="skill-item">
             <span class="skill-icon">🔍</span>
@@ -113,6 +372,1399 @@
 
 <!-- Events -->
 <section id="events">
+<!-- =========================================
+     CYBER INTELLIGENCE & SECURITY UPDATES
+     ========================================= -->
+
+<section id="cyber-updates" class="cyber-updates">
+
+    <div class="section-heading">
+        <span class="section-tag">THREAT INTELLIGENCE</span>
+
+        <h2>Cyber Security Updates</h2>
+
+        <p>
+            Stay informed about emerging vulnerabilities, cyber threats,
+            security research, defensive techniques, and developments
+            across the cybersecurity landscape.
+        </p>
+    </div>
+
+
+    <!-- Featured Update -->
+
+    <article class="cyber-featured">
+
+        <div class="update-label">
+            FEATURED SECURITY UPDATE
+        </div>
+
+        <h3>
+            Understanding Vulnerabilities and Responsible Disclosure
+        </h3>
+
+        <p>
+            A vulnerability is a weakness in software, hardware, configuration,
+            or a security control that may be exploited to compromise the
+            confidentiality, integrity, or availability of a system.
+        </p>
+
+        <p>
+            Security researchers should follow responsible disclosure practices
+            when discovering vulnerabilities. Findings should be documented,
+            reproduced in controlled environments, reported to the appropriate
+            vendor or organization, and handled according to the applicable
+            disclosure policy.
+        </p>
+
+        <div class="update-meta">
+            <span>Category: Vulnerability Research</span>
+            <span>Status: Educational</span>
+        </div>
+
+    </article>
+
+
+    <!-- Update Cards -->
+
+    <div class="updates-grid">
+
+        <!-- Update 1 -->
+
+        <article class="update-card">
+
+            <div class="update-icon">
+                CVE
+            </div>
+
+            <span class="update-category">
+                VULNERABILITY
+            </span>
+
+            <h3>
+                Understanding CVEs
+            </h3>
+
+            <p>
+                Common Vulnerabilities and Exposures (CVEs) provide
+                standardized identifiers for publicly known cybersecurity
+                vulnerabilities.
+            </p>
+
+            <button
+                class="update-btn"
+                onclick="openCyberUpdate('cve')">
+                Read Analysis →
+            </button>
+
+        </article>
+
+
+        <!-- Update 2 -->
+
+        <article class="update-card">
+
+            <div class="update-icon">
+                TI
+            </div>
+
+            <span class="update-category">
+                THREAT INTELLIGENCE
+            </span>
+
+            <h3>
+                Threat Intelligence
+            </h3>
+
+            <p>
+                Learn how security teams collect, analyze, and use information
+                about threat actors, campaigns, indicators, and attack
+                techniques.
+            </p>
+
+            <button
+                class="update-btn"
+                onclick="openCyberUpdate('threat-intelligence')">
+                Read Analysis →
+            </button>
+
+        </article>
+
+
+        <!-- Update 3 -->
+
+        <article class="update-card">
+
+            <div class="update-icon">
+                IOC
+            </div>
+
+            <span class="update-category">
+                INCIDENT RESPONSE
+            </span>
+
+            <h3>
+                Indicators of Compromise
+            </h3>
+
+            <p>
+                Indicators of Compromise are observable artifacts that may
+                provide evidence that a system or environment has been
+                compromised.
+            </p>
+
+            <button
+                class="update-btn"
+                onclick="openCyberUpdate('ioc')">
+                Read Analysis →
+            </button>
+
+        </article>
+
+
+        <!-- Update 4 -->
+
+        <article class="update-card">
+
+            <div class="update-icon">
+                CTI
+            </div>
+
+            <span class="update-category">
+                SECURITY RESEARCH
+            </span>
+
+            <h3>
+                Cyber Threat Intelligence
+            </h3>
+
+            <p>
+                Explore how intelligence teams transform technical and
+                contextual information into actionable security decisions.
+            </p>
+
+            <button
+                class="update-btn"
+                onclick="openCyberUpdate('cti')">
+                Read Analysis →
+            </button>
+
+        </article>
+
+    </div>
+<!-- =========================================
+     FUGA SECURITY OPERATIONS DASHBOARD
+     ========================================= -->
+
+<section id="soc" class="soc-dashboard">
+
+    <div class="section-heading">
+
+        <span class="section-tag">
+            SECURITY OPERATIONS CENTER
+        </span>
+
+        <h2>FUGA SOC Dashboard</h2>
+
+        <p>
+            A security operations view for monitoring threat intelligence,
+            security advisories, defensive priorities, and incident
+            awareness across the FUGA Cyber Security Club training environment.
+        </p>
+
+    </div>
+
+
+    <!-- SOC STATUS -->
+
+    <div class="soc-status">
+
+        <div class="soc-status-main">
+
+            <span class="status-indicator"></span>
+
+            <div>
+
+                <strong>
+                    SOC STATUS
+                </strong>
+
+                <p>
+                    Monitoring systems operational
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="soc-time">
+
+            <span>
+                LAST UPDATE
+            </span>
+
+            <strong id="socLastUpdate">
+                --:--
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- METRICS -->
+
+    <div class="soc-metrics">
+
+
+        <div class="soc-metric">
+
+            <span class="metric-label">
+                THREAT LEVEL
+            </span>
+
+            <strong
+                id="threatLevel"
+                class="metric-value">
+                MODERATE
+            </strong>
+
+            <small>
+                Current training environment status
+            </small>
+
+        </div>
+
+
+        <div class="soc-metric">
+
+            <span class="metric-label">
+                ACTIVE ADVISORIES
+            </span>
+
+            <strong
+                id="activeAdvisories"
+                class="metric-value">
+                04
+            </strong>
+
+            <small>
+                Security items requiring review
+            </small>
+
+        </div>
+
+
+        <div class="soc-metric">
+
+            <span class="metric-label">
+                OPEN INCIDENTS
+            </span>
+
+            <strong
+                id="openIncidents"
+                class="metric-value">
+                02
+            </strong>
+
+            <small>
+                Simulated training incidents
+            </small>
+
+        </div>
+
+
+        <div class="soc-metric">
+
+            <span class="metric-label">
+                LABS ONLINE
+            </span>
+
+            <strong
+                id="labsOnline"
+                class="metric-value">
+                06
+            </strong>
+
+            <small>
+                Authorized training challenges
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- SOC MAIN GRID -->
+
+    <div class="soc-grid">
+
+
+        <!-- THREAT OVERVIEW -->
+
+        <div class="soc-panel">
+
+            <div class="soc-panel-header">
+
+                <div>
+
+                    <span class="panel-kicker">
+                        THREAT INTELLIGENCE
+                    </span>
+
+                    <h3>
+                        Current Threat Overview
+                    </h3>
+
+                </div>
+
+                <span class="panel-status">
+                    LIVE
+                </span>
+
+            </div>
+
+
+            <div class="threat-overview">
+
+
+                <div class="threat-score">
+
+                    <div
+                        id="threatScore"
+                        class="score-number">
+
+                        58
+
+                    </div>
+
+                    <span>
+                        RISK SCORE
+                    </span>
+
+                </div>
+
+
+                <div class="threat-bars">
+
+                    <div class="threat-bar-row">
+
+                        <div>
+
+                            <span>
+                                Web Threats
+                            </span>
+
+                            <strong>
+                                62%
+                            </strong>
+
+                        </div>
+
+                        <div class="bar">
+
+                            <span
+                                style="width:62%">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="threat-bar-row">
+
+                        <div>
+
+                            <span>
+                                Phishing
+                            </span>
+
+                            <strong>
+                                71%
+                            </strong>
+
+                        </div>
+
+                        <div class="bar">
+
+                            <span
+                                style="width:71%">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="threat-bar-row">
+
+                        <div>
+
+                            <span>
+                                Malware
+                            </span>
+
+                            <strong>
+                                48%
+                            </strong>
+
+                        </div>
+
+                        <div class="bar">
+
+                            <span
+                                style="width:48%">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="threat-bar-row">
+
+                        <div>
+
+                            <span>
+                                Credential Attacks
+                            </span>
+
+                            <strong>
+                                66%
+                            </strong>
+
+                        </div>
+
+                        <div class="bar">
+
+                            <span
+                                style="width:66%">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SECURITY ADVISORIES -->
+
+        <div class="soc-panel">
+
+            <div class="soc-panel-header">
+
+                <div>
+
+                    <span class="panel-kicker">
+                        ADVISORIES
+                    </span>
+
+                    <h3>
+                        Security Advisories
+                    </h3>
+
+                </div>
+
+                <button
+                    class="soc-refresh"
+                    onclick="refreshSOC()">
+
+                    ↻ Refresh
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="advisoryList"
+                class="advisory-list">
+            </div>
+
+        </div>
+
+
+        <!-- INCIDENT MONITOR -->
+
+        <div class="soc-panel">
+
+            <div class="soc-panel-header">
+
+                <div>
+
+                    <span class="panel-kicker">
+                        INCIDENT RESPONSE
+                    </span>
+
+                    <h3>
+                        Incident Monitor
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="incidentList"
+                class="incident-list">
+            </div>
+
+        </div>
+
+
+        <!-- DEFENSIVE PRIORITIES -->
+
+        <div class="soc-panel">
+
+            <div class="soc-panel-header">
+
+                <div>
+
+                    <span class="panel-kicker">
+                        DEFENSIVE SECURITY
+                    </span>
+
+                    <h3>
+                        Priority Actions
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="defensive-list">
+
+
+                <div class="defensive-item">
+
+                    <span class="priority-number">
+                        01
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Review authentication controls
+                        </strong>
+
+                        <p>
+                            Verify strong authentication and appropriate
+                            account permissions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="defensive-item">
+
+                    <span class="priority-number">
+                        02
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Validate security logging
+                        </strong>
+
+                        <p>
+                            Confirm that important authentication and
+                            security events are being recorded.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="defensive-item">
+
+                    <span class="priority-number">
+                        03
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Review software exposure
+                        </strong>
+
+                        <p>
+                            Identify outdated software and prioritize
+                            security updates.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="defensive-item">
+
+                    <span class="priority-number">
+                        04
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Test incident procedures
+                        </strong>
+
+                        <p>
+                            Practice detection, escalation, containment,
+                            and recovery procedures.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SOC DISCLAIMER -->
+
+    <div class="soc-disclaimer">
+
+        <strong>
+            TRAINING ENVIRONMENT
+        </strong>
+
+        <p>
+            Dashboard information is intended for cybersecurity education
+            and simulation. It does not represent real-time monitoring of
+            external networks, organizations, or individuals.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+    <!-- Intelligence Sources -->
+
+    <div class="intelligence-sources">
+
+        <h3>Recommended Intelligence Sources</h3>
+
+        <p>
+            FUGA Cyber Security Club encourages members to consult
+            authoritative security resources when researching vulnerabilities
+            and emerging threats.
+        </p>
+
+        <div class="source-list">
+
+            <a
+                href="https://www.cisa.gov/"
+                target="_blank"
+                rel="noopener noreferrer">
+                CISA
+            </a>
+
+            <a
+                href="https://nvd.nist.gov/"
+                target="_blank"
+                rel="noopener noreferrer">
+                NIST NVD
+            </a>
+
+            <a
+                href="https://owasp.org/"
+                target="_blank"
+                rel="noopener noreferrer">
+                OWASP
+            </a>
+
+            <a
+                href="https://attack.mitre.org/"
+                target="_blank"
+                rel="noopener noreferrer">
+                MITRE ATT&amp;CK
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================================
+     FUGA CYBERSECURITY LEARNING PATH
+     ========================================= -->
+
+<section id="learning" class="learning-path">
+
+    <div class="section-heading">
+
+        <span class="section-tag">
+            FUGA SECURITY ACADEMY
+        </span>
+
+        <h2>Cybersecurity Learning Path</h2>
+
+        <p>
+            Build your cybersecurity knowledge progressively — from
+            fundamental concepts to advanced security operations.
+            Choose the level that matches your current experience.
+        </p>
+
+    </div>
+
+
+    <!-- LEVEL SELECTOR -->
+
+    <div class="learning-levels">
+
+        <button
+            class="learning-level active"
+            data-level="beginner">
+
+            <span class="level-icon">
+                01
+            </span>
+
+            <span>
+
+                <strong>
+                    Beginner
+                </strong>
+
+                <small>
+                    Build the fundamentals
+                </small>
+
+            </span>
+
+        </button>
+
+
+        <button
+            class="learning-level"
+            data-level="intermediate">
+
+            <span class="level-icon">
+                02
+            </span>
+
+            <span>
+
+                <strong>
+                    Intermediate
+                </strong>
+
+                <small>
+                    Develop practical skills
+                </small>
+
+            </span>
+
+        </button>
+
+
+        <button
+            class="learning-level"
+            data-level="advanced">
+
+            <span class="level-icon">
+                03
+            </span>
+
+            <span>
+
+                <strong>
+                    Advanced
+                </strong>
+
+                <small>
+                    Security operations & research
+                </small>
+
+            </span>
+
+        </button>
+
+    </div>
+
+
+    <!-- LEVEL DESCRIPTION -->
+
+    <div
+        id="learningDescription"
+        class="learning-description">
+    </div>
+
+
+    <!-- COURSES -->
+
+    <div
+        id="learningCourses"
+        class="learning-courses">
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     CYBER UPDATE MODAL
+     ========================================= -->
+
+<div
+    id="cyberUpdateModal"
+    class="cyber-modal"
+    aria-hidden="true">
+
+    <div class="cyber-modal-content">
+
+        <button
+            class="cyber-modal-close"
+            onclick="closeCyberUpdate()"
+            aria-label="Close">
+            &times;
+        </button>
+
+        <span id="modalCategory"></span>
+
+        <h2 id="modalTitle"></h2>
+
+        <div id="modalBody"></div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     CYBER SECURITY TRAINING CENTER
+     ========================= -->
+
+<section id="training-center" class="training-center">
+
+    <div class="section-heading">
+        <span class="section-tag">TECHNICAL TRAINING</span>
+        <h2>Cyber Security Training Center</h2>
+        <p>
+            Structured technical training covering offensive security,
+            defensive security, application security, digital forensics,
+            secure development, and cyber threat intelligence.
+        </p>
+    </div>
+
+    <!-- Module 01 -->
+    <article class="training-module">
+        <div class="module-number">01</div>
+
+        <div class="module-content">
+            <span class="module-category">OFFENSIVE SECURITY</span>
+
+            <h3>Ethical Hacking &amp; Penetration Testing</h3>
+
+            <p>
+                Ethical hacking is the authorized security assessment of
+                systems, networks, applications, and infrastructure to
+                identify weaknesses before malicious actors can exploit them.
+                Security testing should always be performed within a defined
+                scope and with explicit authorization.
+            </p>
+
+            <h4>Core Areas</h4>
+
+            <div class="topic-list">
+                <span>Reconnaissance</span>
+                <span>Enumeration</span>
+                <span>Vulnerability Assessment</span>
+                <span>Web Application Testing</span>
+                <span>Privilege Escalation</span>
+                <span>Security Reporting</span>
+            </div>
+
+            <h4>Learning Objectives</h4>
+
+            <ul>
+                <li>Understand the methodology used during authorized penetration tests.</li>
+                <li>Identify vulnerabilities and evaluate their potential impact.</li>
+                <li>Understand attack surfaces and security controls.</li>
+                <li>Document findings using professional security reports.</li>
+                <li>Recommend appropriate remediation measures.</li>
+            </ul>
+        </div>
+    </article>
+
+
+    <!-- Module 02 -->
+    <article class="training-module">
+        <div class="module-number">02</div>
+
+        <div class="module-content">
+            <span class="module-category">DEFENSIVE SECURITY</span>
+
+            <h3>Network Security</h3>
+
+            <p>
+                Network security focuses on protecting communication systems,
+                network infrastructure, devices, and transmitted information
+                against unauthorized access, disruption, interception, and
+                manipulation.
+            </p>
+
+            <h4>Core Areas</h4>
+
+            <div class="topic-list">
+                <span>TCP/IP Security</span>
+                <span>Firewalls</span>
+                <span>IDS/IPS</span>
+                <span>VPN</span>
+                <span>Network Segmentation</span>
+                <span>DNS Security</span>
+                <span>Wireless Security</span>
+                <span>Traffic Analysis</span>
+            </div>
+
+            <h4>Learning Objectives</h4>
+
+            <ul>
+                <li>Understand network architecture and common attack surfaces.</li>
+                <li>Analyze network traffic and identify suspicious activity.</li>
+                <li>Understand firewall and intrusion-detection concepts.</li>
+                <li>Apply network segmentation and access-control principles.</li>
+                <li>Understand secure communication protocols such as TLS.</li>
+            </ul>
+        </div>
+    </article>
+
+
+    <!-- Module 03 -->
+    <article class="training-module">
+        <div class="module-number">03</div>
+
+        <div class="module-content">
+            <span class="module-category">APPLICATION SECURITY</span>
+
+            <h3>Web Application Security</h3>
+
+            <p>
+                Web application security examines vulnerabilities that can
+                affect modern web applications, APIs, authentication systems,
+                business logic, data protection mechanisms, and application
+                infrastructure.
+            </p>
+
+            <h4>OWASP Top 10: 2025</h4>
+
+            <div class="owasp-list">
+                <div><strong>A01</strong> Broken Access Control</div>
+                <div><strong>A02</strong> Security Misconfiguration</div>
+                <div><strong>A03</strong> Software Supply Chain Failures</div>
+                <div><strong>A04</strong> Cryptographic Failures</div>
+                <div><strong>A05</strong> Injection</div>
+                <div><strong>A06</strong> Insecure Design</div>
+                <div><strong>A07</strong> Authentication Failures</div>
+                <div><strong>A08</strong> Software or Data Integrity Failures</div>
+                <div><strong>A09</strong> Security Logging &amp; Alerting Failures</div>
+                <div><strong>A10</strong> Mishandling of Exceptional Conditions</div>
+            </div>
+
+            <p class="technical-note">
+                The OWASP Top 10:2025 is used as an application-security
+                awareness reference. Members should also study dedicated
+                testing and secure-development resources when performing
+                practical assessments.
+            </p>
+
+            <h4>Additional Topics</h4>
+
+            <div class="topic-list">
+                <span>Authentication</span>
+                <span>Session Security</span>
+                <span>API Security</span>
+                <span>SQL Injection</span>
+                <span>Cross-Site Scripting</span>
+                <span>CSRF</span>
+                <span>SSRF</span>
+                <span>Secure Coding</span>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- Module 04 -->
+    <article class="training-module">
+        <div class="module-number">04</div>
+
+        <div class="module-content">
+            <span class="module-category">FORENSICS &amp; RESPONSE</span>
+
+            <h3>Digital Forensics &amp; Incident Response</h3>
+
+            <p>
+                Digital forensics involves the systematic identification,
+                acquisition, preservation, examination, and interpretation of
+                digital evidence. Incident response focuses on detecting,
+                containing, investigating, and recovering from security
+                incidents.
+            </p>
+
+            <h4>Core Areas</h4>
+
+            <div class="topic-list">
+                <span>Evidence Acquisition</span>
+                <span>Chain of Custody</span>
+                <span>Disk Forensics</span>
+                <span>Memory Forensics</span>
+                <span>Log Analysis</span>
+                <span>Timeline Analysis</span>
+                <span>Incident Response</span>
+                <span>Threat Hunting</span>
+            </div>
+
+            <h4>Learning Objectives</h4>
+
+            <ul>
+                <li>Understand the forensic investigation lifecycle.</li>
+                <li>Preserve digital evidence while maintaining integrity.</li>
+                <li>Analyze logs and system artifacts.</li>
+                <li>Identify indicators associated with security incidents.</li>
+                <li>Develop structured incident-response procedures.</li>
+            </ul>
+        </div>
+    </article>
+
+
+    <!-- Module 05 -->
+    <article class="training-module">
+        <div class="module-number">05</div>
+
+        <div class="module-content">
+            <span class="module-category">SECURITY ENGINEERING</span>
+
+            <h3>Cryptography &amp; Data Protection</h3>
+
+            <p>
+                Cryptography provides mathematical mechanisms for protecting
+                information and establishing properties such as confidentiality,
+                integrity, authentication, and non-repudiation.
+            </p>
+
+            <h4>Core Areas</h4>
+
+            <div class="topic-list">
+                <span>Symmetric Encryption</span>
+                <span>Asymmetric Encryption</span>
+                <span>Hash Functions</span>
+                <span>Digital Signatures</span>
+                <span>Public Key Infrastructure</span>
+                <span>Digital Certificates</span>
+                <span>Key Management</span>
+                <span>Password Hashing</span>
+            </div>
+
+            <h4>Important Concepts</h4>
+
+            <ul>
+                <li>Confidentiality</li>
+                <li>Integrity</li>
+                <li>Authentication</li>
+                <li>Non-repudiation</li>
+                <li>Key generation and management</li>
+                <li>Secure cryptographic implementation</li>
+            </ul>
+        </div>
+    </article>
+
+
+    <!-- Module 06 -->
+    <article class="training-module">
+        <div class="module-number">06</div>
+
+        <div class="module-content">
+            <span class="module-category">THREAT RESEARCH</span>
+
+            <h3>Malware Analysis &amp; Threat Intelligence</h3>
+
+            <p>
+                Malware analysis examines malicious software to understand its
+                behavior, capabilities, indicators, persistence mechanisms,
+                communication patterns, and potential impact.
+            </p>
+
+            <h4>Core Areas</h4>
+
+            <div class="topic-list">
+                <span>Static Analysis</span>
+                <span>Dynamic Analysis</span>
+                <span>Sandboxing</span>
+                <span>Indicators of Compromise</span>
+                <span>Threat Intelligence</span>
+                <span>Malware Classification</span>
+                <span>Behavioral Analysis</span>
+                <span>Detection Engineering</span>
+            </div>
+
+            <p class="technical-note">
+                Practical malware analysis should be performed in isolated,
+                controlled environments designed specifically for security
+                research.
+            </p>
+        </div>
+    </article>
+
+
+    <!-- Module 07 -->
+    <article class="training-module">
+        <div class="module-number">07</div>
+
+        <div class="module-content">
+            <span class="module-category">SECURE DEVELOPMENT</span>
+
+            <h3>Programming for Cybersecurity</h3>
+
+            <p>
+                Programming is an essential skill for cybersecurity
+                professionals. Members learn to automate security tasks,
+                analyze data, build security utilities, understand vulnerable
+                code, and develop secure applications.
+            </p>
+
+            <h4>Languages &amp; Technologies</h4>
+
+            <div class="topic-list">
+                <span>Python</span>
+                <span>C/C++</span>
+                <span>JavaScript</span>
+                <span>Java</span>
+                <span>PHP</span>
+                <span>SQL</span>
+                <span>Bash</span>
+                <span>PowerShell</span>
+            </div>
+
+            <h4>Security Development Topics</h4>
+
+            <ul>
+                <li>Secure input validation</li>
+                <li>Authentication and authorization</li>
+                <li>Secure API development</li>
+                <li>Database security</li>
+                <li>Logging and monitoring</li>
+                <li>Dependency management</li>
+                <li>Secure software development lifecycle</li>
+            </ul>
+        </div>
+    </article>
+
+
+    <!-- Module 08 -->
+    <article class="training-module">
+        <div class="module-number">08</div>
+
+        <div class="module-content">
+            <span class="module-category">PRACTICAL SECURITY</span>
+
+            <h3>Capture The Flag &amp; Security Labs</h3>
+
+            <p>
+                The club uses controlled practical environments to develop
+                hands-on security skills. Members can investigate simulated
+                vulnerabilities, analyze artifacts, solve security problems,
+                and practice defensive techniques without targeting
+                unauthorized systems.
+            </p>
+
+            <h4>Challenge Categories</h4>
+
+            <div class="topic-list">
+                <span>Web Security</span>
+                <span>Cryptography</span>
+                <span>Digital Forensics</span>
+                <span>OSINT</span>
+                <span>Reverse Engineering</span>
+                <span>Networking</span>
+                <span>Binary Analysis</span>
+                <span>Incident Response</span>
+            </div>
+
+            <div class="training-warning">
+                <strong>⚠ AUTHORIZATION NOTICE</strong>
+                <p>
+                    All practical security testing must be performed only
+                    against systems, applications, networks, and laboratories
+                    for which explicit authorization has been provided.
+                </p>
+            </div>
+        </div>
+    </article>
+
+</section>
+<!-- =========================================
+     CYBERSECURITY KNOWLEDGE BASE / GLOSSARY
+     ========================================= -->
+
+<section id="glossary" class="cyber-glossary">
+
+    <div class="section-heading">
+
+        <span class="section-tag">
+            SECURITY KNOWLEDGE BASE
+        </span>
+
+        <h2>Cybersecurity Glossary</h2>
+
+        <p>
+            A technical reference containing cybersecurity terminology,
+            concepts, technologies, attack techniques, defensive mechanisms,
+            and security operations vocabulary.
+        </p>
+
+    </div>
+
+
+    <!-- Search -->
+
+    <div class="glossary-controls">
+
+        <div class="glossary-search">
+
+            <input
+                type="search"
+                id="glossarySearch"
+                placeholder="Search cybersecurity terms..."
+                autocomplete="off"
+            >
+
+            <span class="search-symbol">⌕</span>
+
+        </div>
+
+
+        <!-- Category -->
+
+        <select id="glossaryCategory">
+
+            <option value="all">
+                All Categories
+            </option>
+
+            <option value="fundamentals">
+                Fundamentals
+            </option>
+
+            <option value="network">
+                Network Security
+            </option>
+
+            <option value="web">
+                Web Security
+            </option>
+
+            <option value="offensive">
+                Offensive Security
+            </option>
+
+            <option value="defensive">
+                Defensive Security
+            </option>
+
+            <option value="forensics">
+                Digital Forensics
+            </option>
+
+            <option value="cryptography">
+                Cryptography
+            </option>
+
+            <option value="threat">
+                Threat Intelligence
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- Glossary Grid -->
+
+    <div
+        id="glossaryGrid"
+        class="glossary-grid"
+    ></div>
+
+
+    <!-- Empty Search Result -->
+
+    <div
+        id="glossaryEmpty"
+        class="glossary-empty"
+    >
+
+        <h3>No terminology found</h3>
+
+        <p>
+            Try another keyword or select a different category.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     GLOSSARY DETAILS MODAL
+     ========================================= -->
+
+<div
+    id="glossaryModal"
+    class="glossary-modal"
+    aria-hidden="true"
+>
+
+    <div class="glossary-modal-content">
+
+        <button
+            class="glossary-close"
+            onclick="closeGlossary()"
+            aria-label="Close glossary">
+            &times;
+        </button>
+
+
+        <span
+            id="glossaryModalCategory"
+            class="glossary-modal-category"
+        ></span>
+
+
+        <h2
+            id="glossaryModalTitle"
+        ></h2>
+
+
+        <div
+            id="glossaryModalBody"
+        ></div>
+
+    </div>
+
+</div>
+
+
     <h2>Upcoming Events</h2>
     <div class="card">
         <ul class="event-list">
@@ -123,6 +1775,276 @@
         </ul>
     </div>
 </section>
+<!-- =========================================
+     FUGA CYBER SECURITY ASSESSMENT
+     ========================================= -->
+
+<section id="quiz" class="security-quiz">
+
+    <div class="section-heading">
+
+        <span class="section-tag">
+            KNOWLEDGE ASSESSMENT
+        </span>
+
+        <h2>Cyber Security Quiz</h2>
+
+        <p>
+            Test your knowledge across cybersecurity fundamentals,
+            network security, application security, defensive security,
+            cryptography, digital forensics, and threat intelligence.
+        </p>
+
+    </div>
+
+
+    <!-- QUIZ START SCREEN -->
+
+    <div
+        id="quizStart"
+        class="quiz-start">
+
+        <div class="quiz-start-icon">
+            🔐
+        </div>
+
+        <h3>
+            Select Your Assessment Level
+        </h3>
+
+        <p>
+            Choose a difficulty level based on your current cybersecurity
+            knowledge.
+        </p>
+
+
+        <div class="quiz-levels">
+
+            <button
+                class="quiz-level"
+                onclick="startQuiz('beginner')">
+
+                <span>LEVEL 01</span>
+
+                <strong>
+                    Fundamentals
+                </strong>
+
+                <small>
+                    Core cybersecurity concepts
+                </small>
+
+            </button>
+
+
+            <button
+                class="quiz-level"
+                onclick="startQuiz('intermediate')">
+
+                <span>LEVEL 02</span>
+
+                <strong>
+                    Intermediate
+                </strong>
+
+                <small>
+                    Security operations &amp; analysis
+                </small>
+
+            </button>
+
+
+            <button
+                class="quiz-level"
+                onclick="startQuiz('advanced')">
+
+                <span>LEVEL 03</span>
+
+                <strong>
+                    Advanced
+                </strong>
+
+                <small>
+                    Advanced security concepts
+                </small>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- QUIZ QUESTION AREA -->
+
+    <div
+        id="quizGame"
+        class="quiz-game"
+        style="display:none;">
+
+        <div class="quiz-header">
+
+            <div>
+
+                <span id="quizLevel">
+                    LEVEL
+                </span>
+
+                <h3 id="quizQuestionNumber">
+                    Question 1
+                </h3>
+
+            </div>
+
+            <div
+                id="quizScore"
+                class="quiz-score">
+                Score: 0
+            </div>
+
+        </div>
+
+
+        <!-- PROGRESS -->
+
+        <div class="quiz-progress">
+
+            <div
+                id="quizProgressBar">
+            </div>
+
+        </div>
+
+
+        <!-- QUESTION -->
+
+        <div class="question-card">
+
+            <span
+                id="quizCategory"
+                class="quiz-category">
+                CATEGORY
+            </span>
+
+            <h3
+                id="quizQuestion">
+                Question goes here
+            </h3>
+
+
+            <div
+                id="quizAnswers"
+                class="quiz-answers">
+            </div>
+
+
+            <div
+                id="quizExplanation"
+                class="quiz-explanation"
+                style="display:none;">
+
+            </div>
+
+
+            <button
+                id="nextQuestionButton"
+                class="next-question"
+                onclick="nextQuizQuestion()"
+                style="display:none;">
+
+                Next Question →
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESULTS -->
+
+    <div
+        id="quizResults"
+        class="quiz-results"
+        style="display:none;">
+
+        <div class="result-icon">
+            🛡️
+        </div>
+
+        <span>
+            ASSESSMENT COMPLETE
+        </span>
+
+        <h3>
+            Your Security Assessment
+        </h3>
+
+
+        <div
+            id="finalScore"
+            class="final-score">
+            0%
+        </div>
+
+
+        <p
+            id="resultMessage">
+        </p>
+
+
+        <div class="result-statistics">
+
+            <div>
+                <strong
+                    id="correctAnswers">
+                    0
+                </strong>
+
+                <span>
+                    Correct
+                </span>
+            </div>
+
+
+            <div>
+                <strong
+                    id="wrongAnswers">
+                    0
+                </strong>
+
+                <span>
+                    Incorrect
+                </span>
+            </div>
+
+
+            <div>
+                <strong
+                    id="totalQuestions">
+                    0
+                </strong>
+
+                <span>
+                    Questions
+                </span>
+            </div>
+
+        </div>
+
+
+        <button
+            class="restart-quiz"
+            onclick="restartQuiz()">
+
+            Take Another Assessment
+
+        </button>
+
+    </div>
+
+</section>
+
 
 <!-- Quiz -->
 <section id="quiz">
@@ -157,6 +2079,624 @@
 
     </div>
 </section>
+<!-- =========================================
+     FUGA CYBER SECURITY CTF & LABS
+     ========================================= -->
+
+<section id="labs" class="cyber-labs">
+
+    <div class="section-heading">
+
+        <span class="section-tag">
+            PRACTICAL SECURITY TRAINING
+        </span>
+
+        <h2>CTF &amp; Security Labs</h2>
+
+        <p>
+            Develop practical cybersecurity skills through controlled,
+            authorized challenges covering web security, cryptography,
+            digital forensics, networking, OSINT, and defensive analysis.
+        </p>
+
+    </div>
+
+
+    <!-- LAB FILTER -->
+
+    <div class="lab-filters">
+
+        <button
+            class="lab-filter active"
+            data-filter="all">
+            ALL
+        </button>
+
+        <button
+            class="lab-filter"
+            data-filter="web">
+            WEB
+        </button>
+
+        <button
+            class="lab-filter"
+            data-filter="crypto">
+            CRYPTO
+        </button>
+
+        <button
+            class="lab-filter"
+            data-filter="forensics">
+            FORENSICS
+        </button>
+
+        <button
+            class="lab-filter"
+            data-filter="network">
+            NETWORK
+        </button>
+
+        <button
+            class="lab-filter"
+            data-filter="osint">
+            OSINT
+        </button>
+
+    </div>
+
+
+    <!-- LAB GRID -->
+
+    <div
+        id="labGrid"
+        class="lab-grid">
+
+
+        <!-- LAB 1 -->
+
+        <article
+            class="lab-card"
+            data-category="web">
+
+            <div class="lab-card-top">
+
+                <span class="lab-number">
+                    LAB-001
+                </span>
+
+                <span class="lab-difficulty beginner">
+                    BEGINNER
+                </span>
+
+            </div>
+
+
+            <h3>
+                HTTP Reconnaissance
+            </h3>
+
+
+            <p>
+                Analyze a deliberately configured web application and
+                identify information exposed through HTTP responses,
+                headers, and application metadata.
+            </p>
+
+
+            <div class="lab-meta">
+
+                <span>
+                    WEB
+                </span>
+
+                <span>
+                    100 PTS
+                </span>
+
+            </div>
+
+
+            <button
+                class="lab-open"
+                onclick="openLab('http-recon')">
+
+                View Challenge →
+
+            </button>
+
+        </article>
+
+
+        <!-- LAB 2 -->
+
+        <article
+            class="lab-card"
+            data-category="crypto">
+
+            <div class="lab-card-top">
+
+                <span class="lab-number">
+                    LAB-002
+                </span>
+
+                <span class="lab-difficulty beginner">
+                    BEGINNER
+                </span>
+
+            </div>
+
+
+            <h3>
+                Cipher Analysis
+            </h3>
+
+
+            <p>
+                Study a controlled ciphertext and determine the
+                characteristics of the encoding or classical cipher
+                used to produce it.
+            </p>
+
+
+            <div class="lab-meta">
+
+                <span>
+                    CRYPTO
+                </span>
+
+                <span>
+                    100 PTS
+                </span>
+
+            </div>
+
+
+            <button
+                class="lab-open"
+                onclick="openLab('cipher-analysis')">
+
+                View Challenge →
+
+            </button>
+
+        </article>
+
+
+        <!-- LAB 3 -->
+
+        <article
+            class="lab-card"
+            data-category="forensics">
+
+            <div class="lab-card-top">
+
+                <span class="lab-number">
+                    LAB-003
+                </span>
+
+                <span class="lab-difficulty intermediate">
+                    INTERMEDIATE
+                </span>
+
+            </div>
+
+
+            <h3>
+                Digital Evidence
+            </h3>
+
+
+            <p>
+                Examine a simulated forensic evidence set and identify
+                relevant artifacts, timestamps, metadata, and indicators
+                that support an investigation.
+            </p>
+
+
+            <div class="lab-meta">
+
+                <span>
+                    FORENSICS
+                </span>
+
+                <span>
+                    250 PTS
+                </span>
+
+            </div>
+
+
+            <button
+                class="lab-open"
+                onclick="openLab('digital-evidence')">
+
+                View Challenge →
+
+            </button>
+
+        </article>
+
+
+        <!-- LAB 4 -->
+
+        <article
+            class="lab-card"
+            data-category="network">
+
+            <div class="lab-card-top">
+
+                <span class="lab-number">
+                    LAB-004
+                </span>
+
+                <span class="lab-difficulty intermediate">
+                    INTERMEDIATE
+                </span>
+
+            </div>
+
+
+            <h3>
+                Packet Investigation
+            </h3>
+
+
+            <p>
+                Analyze a controlled packet capture and identify
+                suspicious communication patterns, protocols, and
+                relevant network indicators.
+            </p>
+
+
+            <div class="lab-meta">
+
+                <span>
+                    NETWORK
+                </span>
+
+                <span>
+                    250 PTS
+                </span>
+
+            </div>
+
+
+            <button
+                class="lab-open"
+                onclick="openLab('packet-investigation')">
+
+                View Challenge →
+
+            </button>
+
+        </article>
+
+
+        <!-- LAB 5 -->
+
+        <article
+            class="lab-card"
+            data-category="osint">
+
+            <div class="lab-card-top">
+
+                <span class="lab-number">
+                    LAB-005
+                </span>
+
+                <span class="lab-difficulty intermediate">
+                    INTERMEDIATE
+                </span>
+
+            </div>
+
+
+            <h3>
+                OSINT Investigation
+            </h3>
+
+
+            <p>
+                Conduct an ethical open-source intelligence investigation
+                using publicly available information and document the
+                reasoning behind your findings.
+            </p>
+
+
+            <div class="lab-meta">
+
+                <span>
+                    OSINT
+                </span>
+
+                <span>
+                    250 PTS
+                </span>
+
+            </div>
+
+
+            <button
+                class="lab-open"
+                onclick="openLab('osint-investigation')">
+
+                View Challenge →
+
+            </button>
+
+        </article>
+
+
+        <!-- LAB 6 -->
+
+        <article
+            class="lab-card"
+            data-category="web">
+
+            <div class="lab-card-top">
+
+                <span class="lab-number">
+                    LAB-006
+                </span>
+
+                <span class="lab-difficulty advanced">
+                    ADVANCED
+                </span>
+
+            </div>
+
+
+            <h3>
+                Web Application Assessment
+            </h3>
+
+
+            <p>
+                Perform a structured security assessment against a
+                deliberately vulnerable training application and
+                document identified weaknesses.
+            </p>
+
+
+            <div class="lab-meta">
+
+                <span>
+                    WEB
+                </span>
+
+                <span>
+                    500 PTS
+                </span>
+
+            </div>
+
+
+            <button
+                class="lab-open"
+                onclick="openLab('web-assessment')">
+
+                View Challenge →
+
+            </button>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     LAB MODAL
+     ========================================= -->
+
+<div
+    id="labModal"
+    class="lab-modal"
+    aria-hidden="true">
+
+    <div class="lab-modal-content">
+
+        <button
+            class="lab-close"
+            onclick="closeLab()">
+
+            &times;
+
+        </button>
+
+
+        <span
+            id="labModalDifficulty"
+            class="lab-difficulty">
+        </span>
+
+
+        <h2
+            id="labModalTitle">
+        </h2>
+
+
+        <div
+            id="labModalBody">
+        </div>
+
+
+        <div class="lab-warning">
+
+            <strong>
+                ⚠ AUTHORIZED TRAINING ONLY
+            </strong>
+
+            <p>
+                These challenges are intended for controlled laboratory
+                environments. Do not test systems, accounts, networks,
+                or applications without explicit authorization.
+            </p>
+
+        </div>
+<!-- =========================================
+     FUGA CYBERSECURITY NEWS & UPDATES
+     ========================================= -->
+
+<section id="updates" class="security-updates">
+
+    <div class="section-heading">
+
+        <span class="section-tag">
+            THREAT & SECURITY INTELLIGENCE
+        </span>
+
+        <h2>Cybersecurity Updates</h2>
+
+        <p>
+            Security advisories, vulnerability analysis, threat intelligence,
+            defensive recommendations, and important developments from the
+            cybersecurity community.
+        </p>
+
+    </div>
+
+
+    <!-- UPDATE CONTROLS -->
+
+    <div class="update-controls">
+
+        <div class="update-search">
+
+            <input
+                type="search"
+                id="updateSearch"
+                placeholder="Search security updates..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <select id="updateCategory">
+
+            <option value="all">
+                All Updates
+            </option>
+
+            <option value="vulnerability">
+                Vulnerabilities
+            </option>
+
+            <option value="threat">
+                Threat Intelligence
+            </option>
+
+            <option value="defensive">
+                Defensive Security
+            </option>
+
+            <option value="privacy">
+                Privacy
+            </option>
+
+            <option value="club">
+                Club News
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- UPDATE GRID -->
+
+    <div
+        id="updatesGrid"
+        class="updates-grid">
+    </div>
+
+
+    <div
+        id="updatesEmpty"
+        class="updates-empty">
+
+        <h3>
+            No updates found
+        </h3>
+
+        <p>
+            Try a different search term or category.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     UPDATE DETAILS MODAL
+     ========================================= -->
+
+<div
+    id="updateModal"
+    class="update-modal"
+    aria-hidden="true">
+
+    <div class="update-modal-content">
+
+        <button
+            class="update-close"
+            onclick="closeUpdate()">
+
+            &times;
+
+        </button>
+
+
+        <div class="update-modal-meta">
+
+            <span id="updateModalCategory"></span>
+
+            <span id="updateModalDate"></span>
+
+        </div>
+
+
+        <h2 id="updateModalTitle"></h2>
+
+
+        <div
+            id="updateModalBody"
+            class="update-modal-body">
+        </div>
+
+
+        <div class="update-source">
+
+            <strong>
+                SOURCE / REFERENCE
+            </strong>
+
+            <p id="updateModalSource">
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+        <button
+            class="lab-start-button"
+            onclick="startLab()">
+
+            Enter Training Environment →
+
+        </button>
+
+    </div>
+
+</div>
+
 
 <!-- Join -->
 <section id="join">
