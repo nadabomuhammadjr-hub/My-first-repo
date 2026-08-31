@@ -176,7 +176,7 @@ const cyberUpdates = {
                 actionable intelligence that can improve detection,
                 prevention, and incident response.
             </p>
-        `
+        
     },
 
 
@@ -212,7 +212,7 @@ const cyberUpdates = {
                 search security logs, identify potentially affected hosts,
                 and support containment and remediation activities.
             </p>
-        `
+        
     },
 
 
@@ -222,7 +222,7 @@ const cyberUpdates = {
 
         title: "Cyber Threat Intelligence",
 
-        body: `
+        body: 
             <p>
                 Cyber threat intelligence combines technical evidence,
                 contextual information, and analytical processes to develop
@@ -245,7 +245,7 @@ const cyberUpdates = {
                 simply reacting to incidents and instead make informed
                 decisions about detection, prevention, and risk reduction.
             </p>
-        `
+        
     }
 
 };
