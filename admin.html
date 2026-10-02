@@ -19,8 +19,8 @@
     <h2>Admin Login</h2>
     <div class="card admin-card">
         <form id="admin-login-form">
-            <label for="admin-password">Password</label>
-            <input type="password" id="admin-password" placeholder="Enter admin password" required>
+            <label for="admin-password">Admin password</label>
+            <input type="password" id="admin-password" placeholder="Enter admin password" required autocomplete="current-password">
             <button type="submit">Log In</button>
             <p id="admin-login-error" class="wrong-text hidden">Wrong password. Try again.</p>
         </form>
@@ -28,8 +28,12 @@
 </section>
 
 <section id="admin-panel-section" class="hidden">
-    <h2>Manage Glossary</h2>
-    <p class="section-subtitle">Terms you add here appear on the Glossary section of the site — saved on this device/browser.</p>
+    <h2>Club Members</h2>
+    <p class="section-subtitle">People who register on the site appear here. Approve them to open the site for them.</p>
+    <div id="admin-applications-list" class="admin-term-list"></div>
+
+    <h2 style="margin-top:50px;">Manage Glossary</h2>
+    <p class="section-subtitle">Terms you add here appear in the Glossary section of the site for everyone.</p>
 
     <div class="card admin-card">
         <form id="admin-add-form">
@@ -52,6 +56,7 @@
 </footer>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="firebase-config.js"></script>
 <script src="script.js"></script>

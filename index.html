@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+.<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,8 +9,96 @@
     <title>Cyber Security Club | Federal University Gashua</title>
     <meta name="description" content="Official website of the Cyber Security Club at Federal University Gashua — ethical hacking, networking, and programming training.">
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ===== Login gate: the whole site stays hidden until a member is signed in (and approved) ===== */
+        body:not(.unlocked) > *:not(#auth-gate):not(script):not(style) { display: none !important; }
+        body.unlocked #auth-gate { display: none; }
+
+        #auth-gate {
+            position: fixed; inset: 0; z-index: 99999;
+            display: flex; align-items: center; justify-content: center;
+            background: #050a08; padding: 20px; overflow-y: auto;
+            font-family: "Courier New", Courier, monospace;
+        }
+        .gate-box {
+            width: 100%; max-width: 400px; box-sizing: border-box;
+            background: #0b1511; color: #d8ffe8;
+            border: 1px solid #00ff66; border-radius: 10px; padding: 28px;
+            box-shadow: 0 0 25px rgba(0, 255, 102, .2);
+        }
+        .gate-box h2 { color: #00ff66; margin: 0 0 6px; }
+        .gate-box p.sub { margin: 0 0 18px; font-size: .9rem; opacity: .85; line-height: 1.5; }
+        .gate-box label { display: block; margin: 12px 0 4px; font-size: .85rem; }
+        .gate-box input {
+            width: 100%; box-sizing: border-box; padding: 10px;
+            background: #050a08; color: #fff; font-size: 1rem;
+            border: 1px solid #1d3b2b; border-radius: 6px;
+        }
+        .gate-box input:focus,
+        .gate-box button:focus-visible { outline: 2px solid #00ff66; outline-offset: 2px; }
+        .gate-box button.gate-main {
+            width: 100%; margin-top: 18px; padding: 11px;
+            background: #00ff66; color: #000; border: 0; border-radius: 6px;
+            font-weight: bold; font-size: 1rem; cursor: pointer;
+        }
+        .gate-box button.gate-main:disabled { opacity: .6; cursor: not-allowed; }
+        .gate-box button.gate-link {
+            background: none; border: 0; padding: 0; margin-top: 14px;
+            color: #00ff66; font-size: .9rem; text-decoration: underline; cursor: pointer;
+        }
+        #gate-msg { margin-top: 12px; min-height: 20px; font-size: .85rem; color: #ff6b6b; }
+        #gate-pending { text-align: center; }
+        #gate-pending-note { font-size: .85rem; color: #ffd166; min-height: 18px; }
+        #gate-loading { text-align: center; color: #00ff66; }
+    </style>
 </head>
 <body>
+
+<!-- Login / registration gate (shown first; the site opens only after sign-in) -->
+<div id="auth-gate">
+    <div class="gate-box">
+
+        <div id="gate-loading">Checking your session…</div>
+
+        <div id="gate-form-view" style="display:none;">
+            <h2 id="gate-title">Member login</h2>
+            <p class="sub" id="gate-sub">Log in to open the FUGA Cyber Club site.</p>
+
+            <form id="gate-form">
+                <div id="gate-name-wrap" style="display:none;">
+                    <label for="gate-name">Full name</label>
+                    <input type="text" id="gate-name" autocomplete="name">
+                </div>
+
+                <label for="gate-email">Email</label>
+                <input type="email" id="gate-email" required autocomplete="email">
+
+                <label for="gate-password">Password (at least 6 characters)</label>
+                <input type="password" id="gate-password" required minlength="6" autocomplete="current-password">
+
+                <button type="submit" class="gate-main" id="gate-submit">Log in</button>
+            </form>
+
+            <div id="gate-msg" role="alert"></div>
+            <button type="button" class="gate-link" id="gate-toggle">New here? Create an account</button>
+        </div>
+
+        <div id="gate-pending" style="display:none;">
+            <h2>Application pending</h2>
+            <p class="sub">Your account is created. The site opens once a club admin approves you.</p>
+            <p id="gate-pending-note" role="status"></p>
+            <button type="button" class="gate-main" id="gate-recheck">Check again</button>
+            <br>
+            <button type="button" class="gate-link" id="gate-pending-logout">Log out</button>
+        </div>
+
+        <noscript>
+            <p class="sub">Turn on JavaScript in your browser to use this site.</p>
+        </noscript>
+
+    </div>
+</div>
 
 <!-- Boot Intro Screen -->
 <div id="intro-screen">
@@ -30,10 +118,10 @@
         <li><a href="#quiz">Quiz</a></li>
         <li><a href="#glossary">Glossary</a></li>
         <li><a href="#labs">Labs</a></li>
-        <li><a href="#join">Join</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#team">Team</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="#" id="logoutBtn">Log out</a></li>
     </ul>
 </nav>
 
@@ -57,7 +145,6 @@
         development — trained by students, for students.
     </p>
 
-    <button onclick="location.href='#join'">Join the Club</button>
     <button class="btn-secondary" onclick="location.href='#events'">View Events</button>
 </section>
 
@@ -313,7 +400,7 @@
         </button>
         <button class="learning-level" data-level="advanced">
             <span class="level-icon">03</span>
-            <span><strong>Advanced</strong><small>Security operations & research</small></span>
+            <span><strong>Advanced</strong><small>Security operations &amp; research</small></span>
         </button>
     </div>
 
@@ -743,31 +830,6 @@
 
 </section>
 
-<!-- Join -->
-<section id="join">
-    <h2>Join the Club</h2>
-    <p class="section-subtitle">Applications are reviewed manually. You'll be added once approved.</p>
-
-    <div class="card join-card">
-        <form id="join-form">
-            <label for="join-name">Full Name</label>
-            <input type="text" id="join-name" name="name" required placeholder="e.g. Muhammad Bello">
-
-            <label for="join-email">Gmail Address</label>
-            <input type="email" id="join-email" name="email" required placeholder="yourname@gmail.com">
-
-            <label for="join-interest">What do you want to learn?</label>
-            <textarea id="join-interest" name="interest" required rows="3" placeholder="e.g. Ethical hacking, Python, Web development..."></textarea>
-
-            <button type="submit">Submit Application</button>
-        </form>
-
-        <div id="join-pending" class="hidden">
-            <p class="pending-text">Wait for DADDY PROGRAMMER to accept you before you become a member of this club.</p>
-        </div>
-    </div>
-</section>
-
 <!-- Gallery -->
 <section id="gallery">
     <h2>Gallery</h2>
@@ -904,8 +966,10 @@
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="firebase-config.js"></script>
+<script src="gate.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
