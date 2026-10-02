@@ -1,116 +1,222 @@
 /* ============================================
    ADMIN PAGE — admin.js
+   Sign-in uses Firebase Authentication. The Firestore rules
+   decide who may approve members and edit the glossary.
    ============================================ */
 
-// Change this to your own password before you publish the site.
-// This is a simple client-side gate, not real security — don't use it
-// to protect anything sensitive, just to keep casual visitors out.
-const ADMIN_PASSWORD = "ccsc-admin-2026";
+(function () {
+    // The email of the admin account you create in Firebase → Authentication → Users
+    const ADMIN_EMAIL = "nadabomuhammadjr@gmail.com";
 
-document.addEventListener("DOMContentLoaded", () => {
-    const loginForm = document.getElementById("admin-login-form");
-    const addForm = document.getElementById("admin-add-form");
+    const auth = firebase.auth();
+    const $ = (id) => document.getElementById(id);
 
-    loginForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const entered = document.getElementById("admin-password").value;
-        const error = document.getElementById("admin-login-error");
+    function isAdminUser(user) {
+        return !!user && !!user.email &&
+            user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase();
+    }
 
-        if (entered === ADMIN_PASSWORD) {
-            document.getElementById("admin-login-section").classList.add("hidden");
-            document.getElementById("admin-panel-section").classList.remove("hidden");
-            renderApplications();
-            renderAdminTermList();
-        } else {
-            error.classList.remove("hidden");
+    function friendlyAuthError(err) {
+        switch (err && err.code) {
+            case "auth/invalid-credential":
+            case "auth/wrong-password":
+            case "auth/user-not-found": return "Wrong admin password.";
+            case "auth/too-many-requests": return "Too many attempts. Wait a few minutes and try again.";
+            case "auth/network-request-failed": return "No connection. Check your internet and try again.";
+            default: return "Could not sign in. Try again.";
         }
-    });
+    }
 
-    addForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const term = document.getElementById("term-name").value.trim();
-        const def = document.getElementById("term-definition").value.trim();
-        if (!term || !def) return;
+    function showLogin() {
+        $("admin-login-section").classList.remove("hidden");
+        $("admin-panel-section").classList.add("hidden");
+    }
 
-        addForm.querySelector("button").disabled = true;
-        await addGlossaryTerm(term, def);
-        addForm.reset();
-        addForm.querySelector("button").disabled = false;
+    function addLogoutButton() {
+        if ($("admin-logout")) return;
+        const btn = document.createElement("button");
+        btn.id = "admin-logout";
+        btn.className = "btn-secondary";
+        btn.textContent = "Log out";
+        btn.addEventListener("click", () => auth.signOut());
+        $("admin-panel-section").prepend(btn);
+    }
+
+    function showPanel() {
+        $("admin-login-section").classList.add("hidden");
+        $("admin-panel-section").classList.remove("hidden");
+        addLogoutButton();
+        renderMembers();
         renderAdminTermList();
-    });
-});
-
-/* ---------- Applications ---------- */
-
-async function renderApplications() {
-    const listEl = document.getElementById("admin-applications-list");
-    listEl.innerHTML = `<p class="section-subtitle">Loading...</p>`;
-
-    const snapshot = await db.collection("applications")
-        .where("status", "==", "pending")
-        .get();
-
-    listEl.innerHTML = "";
-
-    if (snapshot.empty) {
-        listEl.innerHTML = `<p class="section-subtitle">No pending applications right now.</p>`;
-        return;
     }
 
-    snapshot.forEach(doc => {
-        const app = doc.data();
-        const row = document.createElement("div");
-        row.className = "card admin-term-row";
-        row.innerHTML = `
-            <div>
-                <h3>${escapeHTML(app.name)}</h3>
-                <p>${escapeHTML(app.email)}</p>
-                <p>${escapeHTML(app.interest)}</p>
-            </div>
-            <div style="display:flex; gap:8px;">
-                <button data-action="approve">Approve</button>
-                <button class="btn-secondary" data-action="reject">Reject</button>
-            </div>
-        `;
-        row.querySelector('[data-action="approve"]').addEventListener("click", () => updateApplicationStatus(doc.id, "approved"));
-        row.querySelector('[data-action="reject"]').addEventListener("click", () => updateApplicationStatus(doc.id, "rejected"));
-        listEl.appendChild(row);
-    });
-}
+    document.addEventListener("DOMContentLoaded", () => {
+        const loginForm = $("admin-login-form");
+        const addForm = $("admin-add-form");
 
-async function updateApplicationStatus(id, status) {
-    await db.collection("applications").doc(id).update({ status });
-    renderApplications();
-}
+        loginForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const error = $("admin-login-error");
+            const button = loginForm.querySelector("button");
+            error.classList.add("hidden");
 
-/* ---------- Glossary ---------- */
+            if (ADMIN_EMAIL.indexOf("PUT_YOUR") === 0) {
+                error.textContent = "Set ADMIN_EMAIL in admin.js first.";
+                error.classList.remove("hidden");
+                return;
+            }
 
-async function renderAdminTermList() {
-    const listEl = document.getElementById("admin-term-list");
-    listEl.innerHTML = `<p class="section-subtitle">Loading...</p>`;
-
-    const custom = await getCustomGlossary();
-    listEl.innerHTML = "";
-
-    if (custom.length === 0) {
-        listEl.innerHTML = `<p class="section-subtitle">No custom terms added yet. The 10 starter terms are always shown on the site.</p>`;
-        return;
-    }
-
-    custom.forEach(item => {
-        const row = document.createElement("div");
-        row.className = "card admin-term-row";
-        row.innerHTML = `
-            <div>
-                <h3>${escapeHTML(item.term)}</h3>
-                <p>${escapeHTML(item.def)}</p>
-            </div>
-            <button class="btn-secondary">Remove</button>
-        `;
-        row.querySelector("button").addEventListener("click", async () => {
-            await deleteGlossaryTerm(item.id);
-            renderAdminTermList();
+            button.disabled = true;
+            try {
+                await auth.signInWithEmailAndPassword(ADMIN_EMAIL, $("admin-password").value);
+                $("admin-password").value = "";
+            } catch (err) {
+                error.textContent = friendlyAuthError(err);
+                error.classList.remove("hidden");
+            } finally {
+                button.disabled = false;
+            }
         });
-        listEl.appendChild(row);
+
+        addForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const term = $("term-name").value.trim();
+            const def = $("term-definition").value.trim();
+            if (!term || !def) return;
+
+            const button = addForm.querySelector("button");
+            button.disabled = true;
+            try {
+                await addGlossaryTerm(term, def);
+                addForm.reset();
+                renderAdminTermList();
+            } catch (err) {
+                console.error(err);
+                alert("Could not add the term. Make sure you are signed in as the admin and the Firestore rules allow it.");
+            } finally {
+                button.disabled = false;
+            }
+        });
+
+        auth.onAuthStateChanged((user) => {
+            if (isAdminUser(user)) showPanel();
+            else showLogin();
+        });
     });
-}
+
+    /* ---------- Members (approve / revoke) ---------- */
+
+    function sectionHeading(text) {
+        const h = document.createElement("h3");
+        h.textContent = text;
+        return h;
+    }
+
+    function note(text) {
+        const p = document.createElement("p");
+        p.className = "section-subtitle";
+        p.textContent = text;
+        return p;
+    }
+
+    function memberRow(m, isPending) {
+        const row = document.createElement("div");
+        row.className = "card admin-term-row";
+        const joined = m.createdAt && m.createdAt.toDate
+            ? m.createdAt.toDate().toLocaleDateString()
+            : "";
+
+        row.innerHTML = `
+            <div>
+                <h3>${escapeHTML(m.name || "(no name)")}</h3>
+                <p>${escapeHTML(m.email || "")}</p>
+                ${joined ? `<p>Registered ${escapeHTML(joined)}</p>` : ""}
+            </div>
+            <button ${isPending ? "" : 'class="btn-secondary"'}>${isPending ? "Approve" : "Revoke access"}</button>
+        `;
+
+        const button = row.querySelector("button");
+        button.addEventListener("click", async () => {
+            button.disabled = true;
+            try {
+                await db.collection("members").doc(m.id).update({ approved: isPending });
+                renderMembers();
+            } catch (err) {
+                console.error(err);
+                alert("Could not update this member. Check the Firestore rules.");
+                button.disabled = false;
+            }
+        });
+        return row;
+    }
+
+    async function renderMembers() {
+        const listEl = $("admin-applications-list");
+        listEl.innerHTML = `<p class="section-subtitle">Loading...</p>`;
+
+        let members = [];
+        try {
+            const snapshot = await db.collection("members").get();
+            snapshot.forEach(doc => members.push({ id: doc.id, ...doc.data() }));
+        } catch (err) {
+            console.error(err);
+            listEl.innerHTML = `<p class="section-subtitle">Could not load members. Check the Firestore rules and that you are signed in as the admin.</p>`;
+            return;
+        }
+
+        members = members.filter(m =>
+            (m.email || "").toLowerCase() !== ADMIN_EMAIL.toLowerCase());
+        members.sort((a, b) =>
+            ((b.createdAt && b.createdAt.seconds) || 0) - ((a.createdAt && a.createdAt.seconds) || 0));
+
+        const pending = members.filter(m => m.approved !== true);
+        const approved = members.filter(m => m.approved === true);
+
+        listEl.innerHTML = "";
+
+        listEl.appendChild(sectionHeading(`Waiting for approval (${pending.length})`));
+        if (pending.length === 0) listEl.appendChild(note("No one is waiting right now."));
+        pending.forEach(m => listEl.appendChild(memberRow(m, true)));
+
+        listEl.appendChild(sectionHeading(`Approved members (${approved.length})`));
+        if (approved.length === 0) listEl.appendChild(note("No approved members yet."));
+        approved.forEach(m => listEl.appendChild(memberRow(m, false)));
+    }
+
+    /* ---------- Glossary ---------- */
+
+    async function renderAdminTermList() {
+        const listEl = $("admin-term-list");
+        listEl.innerHTML = `<p class="section-subtitle">Loading...</p>`;
+
+        const custom = await getCustomGlossary();
+        listEl.innerHTML = "";
+
+        if (custom.length === 0) {
+            listEl.innerHTML = `<p class="section-subtitle">No custom terms added yet. The starter terms are always shown on the site.</p>`;
+            return;
+        }
+
+        custom.forEach(item => {
+            const row = document.createElement("div");
+            row.className = "card admin-term-row";
+            row.innerHTML = `
+                <div>
+                    <h3>${escapeHTML(item.term)}</h3>
+                    <p>${escapeHTML(item.def)}</p>
+                </div>
+                <button class="btn-secondary">Remove</button>
+            `;
+            row.querySelector("button").addEventListener("click", async () => {
+                try {
+                    await deleteGlossaryTerm(item.id);
+                    renderAdminTermList();
+                } catch (err) {
+                    console.error(err);
+                    alert("Could not remove the term. Make sure you are signed in as the admin.");
+                }
+            });
+            listEl.appendChild(row);
+        });
+    }
+})();
