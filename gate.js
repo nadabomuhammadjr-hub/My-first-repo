@@ -12,7 +12,7 @@
 (function () {
   // true  = new members must be approved by an admin before the site opens
   // false = anyone who registers gets in immediately
-  var REQUIRE_APPROVAL = true;
+  var REQUIRE_APPROVAL = false;
 
   var auth = firebase.auth();
   var db = firebase.firestore();
@@ -71,8 +71,12 @@
       case 'auth/network-request-failed': return 'No connection. Check your internet and try again.';
       case 'auth/operation-not-allowed': return 'Email/password sign-in is not turned on in Firebase yet.';
       case 'auth/unauthorized-domain': return 'This website address is not in the Firebase authorized domains list yet.';
+      case 'auth/configuration-not-found':
+      case 'auth/admin-restricted-operation': return 'Sign-up is not set up in Firebase yet. In Firebase open Authentication, click Get started, then turn on Email/Password.';
+      case 'auth/invalid-api-key':
+      case 'auth/api-key-not-valid.-please-pass-a-valid-api-key.': return 'The Firebase API key in firebase-config.js is not valid.';
       case 'permission-denied': return 'Your account was created, but your application could not be saved. Ask an admin to check the Firestore rules.';
-      default: return 'Something went wrong. Try again.';
+      default: return 'Something went wrong (' + ((e && e.code) || (e && e.message) || 'unknown') + '). Try again.';
     }
   }
 
@@ -132,6 +136,7 @@
 
     task
       .catch(function (e) {
+        console.error('Gate error:', e);
         setMsg(friendlyError(e));
         setNote(friendlyError(e));
       })
