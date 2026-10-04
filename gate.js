@@ -47,7 +47,7 @@
     var reg = m === 'register';
     el('gate-title').textContent = reg ? 'Create your account' : 'Member login';
     el('gate-sub').textContent = reg
-      ? 'Register to apply for the FUGA Cyber Club.'
+      ? 'Register to join the FUGA Cyber Club.'
       : 'Log in to open the FUGA Cyber Club site.';
     show('gate-name-wrap', reg);
     el('gate-name').required = reg;
@@ -73,9 +73,8 @@
       case 'auth/unauthorized-domain': return 'This website address is not in the Firebase authorized domains list yet.';
       case 'auth/configuration-not-found':
       case 'auth/admin-restricted-operation': return 'Sign-up is not set up in Firebase yet. In Firebase open Authentication, click Get started, then turn on Email/Password.';
-      case 'auth/invalid-api-key':
-      case 'auth/api-key-not-valid.-please-pass-a-valid-api-key.': return 'The Firebase API key in firebase-config.js is not valid.';
-      case 'permission-denied': return 'Your account was created, but your application could not be saved. Ask an admin to check the Firestore rules.';
+      case 'auth/invalid-api-key': return 'The Firebase API key in firebase-config.js is not valid.';
+      case 'permission-denied': return 'Your account was created, but your details could not be saved. Ask an admin to check the Firestore rules.';
       default: return 'Something went wrong (' + ((e && e.code) || (e && e.message) || 'unknown') + '). Try again.';
     }
   }
