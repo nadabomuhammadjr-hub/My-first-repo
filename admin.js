@@ -6,7 +6,7 @@
 
 (function () {
     // The email of the admin account you create in Firebase → Authentication → Users
-    const ADMIN_EMAIL = "nadabomuhammadjr@gmail.com";
+    const ADMIN_EMAIL = "muhammadbaimari@gmail.com";
 
     const auth = firebase.auth();
     const $ = (id) => document.getElementById(id);
@@ -60,7 +60,7 @@
             const button = loginForm.querySelector("button");
             error.classList.add("hidden");
 
-            if (ADMIN_EMAIL.indexOf("PUT_YOUR") === 0) {
+            if (ADMIN_EMAIL.indexOf("muhammadbaimari@gmail.com") === 0) {
                 error.textContent = "Set ADMIN_EMAIL in admin.js first.";
                 error.classList.remove("hidden");
                 return;
