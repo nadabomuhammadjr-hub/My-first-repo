@@ -1,11 +1,11 @@
-/* ============================================
+./* ============================================
    ADMIN PAGE — admin.js
    Sign-in uses Firebase Authentication. The Firestore rules
    decide who may approve members and edit the glossary.
    ============================================ */
 
 (function () {
-    // The email of the admin account you create in Firebase → Authentication → Users
+    // The email of the admin account in Firebase → Authentication → Users
     const ADMIN_EMAIL = "muhammadbaimari@gmail.com";
 
     const auth = firebase.auth();
@@ -23,7 +23,7 @@
             case "auth/user-not-found": return "Wrong admin password.";
             case "auth/too-many-requests": return "Too many attempts. Wait a few minutes and try again.";
             case "auth/network-request-failed": return "No connection. Check your internet and try again.";
-            default: return "Could not sign in. Try again.";
+            default: return "Could not sign in (" + ((err && err.code) || "unknown") + "). Try again.";
         }
     }
 
@@ -60,17 +60,12 @@
             const button = loginForm.querySelector("button");
             error.classList.add("hidden");
 
-            if (ADMIN_EMAIL.indexOf("muhammadbaimari@gmail.com") === 0) {
-                error.textContent = "Set ADMIN_EMAIL in admin.js first.";
-                error.classList.remove("hidden");
-                return;
-            }
-
             button.disabled = true;
             try {
                 await auth.signInWithEmailAndPassword(ADMIN_EMAIL, $("admin-password").value);
                 $("admin-password").value = "";
             } catch (err) {
+                console.error("Admin sign-in error:", err);
                 error.textContent = friendlyAuthError(err);
                 error.classList.remove("hidden");
             } finally {
